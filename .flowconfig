@@ -57,6 +57,7 @@
 ; Ignore some utility files
 .*/src/core/boot/store/promise.js.*
 .*/src/core/boot/store/array.js.*
+.*babel.config.js.*
 
 [include]
 node_modules/react-navigation/src/TypeDefinition.js
