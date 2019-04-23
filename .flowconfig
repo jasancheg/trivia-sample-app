@@ -2,6 +2,7 @@
 ; .*/node_modules/.*
 .*/coverage/.*
 .*/dist/.*
+.*/docs/.*
 
 ; We fork some components by platform
 .*/*[.]android.js
@@ -17,6 +18,7 @@
 ; "node_modules/react-native" but in the source repo it is in the root
 .*/Libraries/react-native/React.js
 .*/Libraries/react-native/ReactNative.js
+.*/Libraries/EventEmitter/NativeEventEmitter.js
 
 ; Additional create-react-native-app ignores
 
@@ -134,4 +136,4 @@ untyped-import
 untyped-type-import
 
 [version]
-^0.97.0
+^0.78.0

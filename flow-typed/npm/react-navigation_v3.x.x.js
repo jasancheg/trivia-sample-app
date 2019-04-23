@@ -1,5 +1,5 @@
-// flow-typed signature: 75f886cf5a1707c87517fb87387dbfa8
-// flow-typed version: 96ddcb844e/react-navigation_v3.x.x/flow_>=v0.92.x
+// flow-typed signature: d052983a60f3b0cd039380226d459cec
+// flow-typed version: 976d0874e7/react-navigation_v3.x.x/flow_>=v0.60.x <=v0.91.x
 
 // @flow
 
@@ -356,8 +356,11 @@ declare module 'react-navigation' {
   declare export type NavigationScreenComponent<
     Route: NavigationRoute,
     Options: {},
-    Props: NavigationNavigatorProps<Options, Route>,
-  > = React$ComponentType<Props> &
+    Props: {}
+  > = React$ComponentType<{
+    ...Props,
+    ...NavigationNavigatorProps<Options, Route>,
+  }> &
     withOptionalNavigationOptions<Options>;
 
   declare interface withRouter<State, Options> {
@@ -367,8 +370,11 @@ declare module 'react-navigation' {
   declare export type NavigationNavigator<
     State: NavigationState,
     Options: {},
-    Props: NavigationNavigatorProps<Options, State>,
-  > = React$ComponentType<Props> &
+    Props: {}
+  > = React$StatelessFunctionalComponent<{
+    ...Props,
+    ...NavigationNavigatorProps<Options, State>,
+  }> &
     withRouter<State, Options> &
     withOptionalNavigationOptions<Options>;
 
@@ -592,7 +598,7 @@ declare module 'react-navigation' {
       fallback?: $ElementType<
         $PropertyType<
           {|
-            ...{| params: { } |},
+            ...{| params: {| [ParamName]: void |} |},
             ...$Exact<S>,
           |},
           'params'
@@ -602,7 +608,7 @@ declare module 'react-navigation' {
     ) => $ElementType<
       $PropertyType<
         {|
-          ...{| params: { } |},
+          ...{| params: {| [ParamName]: void |} |},
           ...$Exact<S>,
         |},
         'params'
@@ -675,8 +681,11 @@ declare module 'react-navigation' {
   declare export type NavigationContainer<
     State: NavigationState,
     Options: {},
-    Props: NavigationContainerProps<Options, State>,
-  > = React$ComponentType<Props> &
+    Props: {}
+  > = React$ComponentType<{
+    ...Props,
+    ...NavigationContainerProps<State, Options>,
+  }> &
     withRouter<State, Options> &
     withOptionalNavigationOptions<Options>;
 
