@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "io.inidea.triviag2i",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "io.inidea.triviag2i"
     }
   }
 }
