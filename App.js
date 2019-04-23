@@ -3,66 +3,52 @@
  *
  * @flow
  */
+/* eslint-disabled import/no-named-as-default */
 
-import React from "react";
-import { Platform, StatusBar, StyleSheet, View } from "react-native";
-import { AppLoading, Asset, Font, Icon } from "expo";
-import AppNavigator from "./navigation/AppNavigator";
+import React, { Component } from "react";
 
-export default class App extends React.Component {
+import type { ConfigType } from "./src/core/constants/config";
+import zConfig from "./src/core/constants/config";
+import Trivia from "./src/Trivia";
+
+// flow types
+type PropsType = {};
+type StateType = {
+  config: ConfigType
+};
+
+/**
+ * Create the Application
+ *
+ * @see https://local.triviag2i.inidea.io/docs/mobile/manual/app.md
+ * @name App
+ */
+export default class App extends Component<PropsType, StateType> {
+  /**
+   * map application config
+   * @type {Object}
+   */
   state = {
-    isLoadingComplete: false,
+    config: null
   };
 
-  render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-      return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
-        />
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
-      );
-    }
+  /**
+   * get application config
+   * @return {void}  state is updated
+   */
+  componentWillMount(): void {
+    // config should match the ConfigType
+    const config: ConfigType = zConfig;
+
+    this.setState((prevState: {}): {} => ({ config }));
   }
 
-  _loadResourcesAsync = async () => {
-    return Promise.all([
-      Asset.loadAsync([
-        require("./assets/images/robot-dev.png"),
-        require("./assets/images/robot-prod.png"),
-      ]),
-      Font.loadAsync({
-        // This is the font that we are using for our tab bar
-        ...Icon.Ionicons.font,
-        // We include SpaceMono because we use it in HomeScreen.js. Feel free
-        // to remove this if you are not using it in your app
-        "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf"),
-      }),
-    ]);
-  };
-
-  _handleLoadingError = error => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
-    console.warn(error);
-  };
-
-  _handleFinishLoading = (): void => {
-    this.setState({ isLoadingComplete: true });
-  };
+  /**
+   * boot the application
+   * @return {React.Element}  main module
+   */
+  render(): React$Element<typeof Trivia> {
+    const { config } = this.state;
+    return <Trivia {...config} />;
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff"
-  }
-});
