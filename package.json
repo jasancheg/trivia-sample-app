@@ -3,6 +3,20 @@
   "version": "0.0.1",
   "description": "Just for test RN",
   "main": "node_modules/expo/AppEntry.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasancheg/trivia-sample-app.git"
+  },
+  "keywords": ["sample app"],
+  "author": {
+    "name": "Jose Antonio Sanchez",
+    "email": "jasancheg@gmail.com",
+    "url": "http://inidea.io/"
+  },
+  "license": "ISC",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
