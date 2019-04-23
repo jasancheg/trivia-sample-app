@@ -2,6 +2,13 @@
 
 ...
 
+```sh
+# global dependencies
+npm i -g flow-typed eslint expo-cli create-react-app
+```
+
+...
+
 ### troubleshooting
 - read this on future updates
   -> https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html
