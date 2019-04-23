@@ -18,7 +18,7 @@
 ; "node_modules/react-native" but in the source repo it is in the root
 .*/Libraries/react-native/React.js
 .*/Libraries/react-native/ReactNative.js
-.*/Libraries/EventEmitter/NativeEventEmitter.js
+; .*/Libraries/EventEmitter/NativeEventEmitter.js
 
 ; Additional create-react-native-app ignores
 
