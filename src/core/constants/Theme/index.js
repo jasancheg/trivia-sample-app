@@ -13,6 +13,7 @@ import fonts from "./_fonts";
 
 import footerTabNavigation from "./footertabnavigation";
 import splashLoading from "./splashloading";
+import tabBarIcon from "./tabbaricon";
 import footerNav from "./footernav";
 import hamburger from "./hamburger";
 import statusbar from "./statusbar";
@@ -28,6 +29,7 @@ export default {
   // - Components styles
   footerTabNavigation,
   splashLoading,
+  tabBarIcon,
   footerNav,
   hamburger,
   statusbar,

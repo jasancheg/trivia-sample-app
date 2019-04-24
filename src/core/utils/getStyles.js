@@ -89,7 +89,7 @@ const applyPlatform = (styles: StyleType): StyleType => {
 
 export default (props: PropsType = {}, cName: string): StyleSheetType => {
   // default styles
-  const defaultStyles = _isObject(theme[cName]) ? theme[cName].default : {};
+  const defaultStyles = _isObject(theme[cName]) ? theme[cName].def : {};
   // composed styles
   const composedStyles = getComposedStyles(props, cName);
   // custom styles

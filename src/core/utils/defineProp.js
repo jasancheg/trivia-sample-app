@@ -7,7 +7,7 @@
 type PropType = {};
 
 /**
- * it just definde and object wrapper for the prop
+ * it define and object wrapper for the prop (typed)
  * @type {object}
  */
 export default (name: string, value: mixed): PropType => {

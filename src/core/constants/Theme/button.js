@@ -13,10 +13,11 @@ import {
   white
 } from "./_constants";
 
+// - it is a propose for multi theming, states, and classnames
 // - it separates style as 'states' or classname definitions
 // - each classname supports android and ios keys form specific platform specs
-export default {
-  default: {
+const styles = {
+  def: {
     container: {
       marginRight: 15,
       marginLeft: 15,
@@ -76,3 +77,5 @@ export default {
     }
   }
 };
+
+export default styles;

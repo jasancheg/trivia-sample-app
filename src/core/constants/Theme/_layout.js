@@ -7,7 +7,6 @@
 import { Dimensions, PixelRatio } from "react-native";
 import { Constants } from "expo";
 
-
 export const { height: deviceHeight, width } = Dimensions.get("window");
 
 const height = deviceHeight - Constants.statusBarHeight;
