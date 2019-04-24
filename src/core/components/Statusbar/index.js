@@ -6,7 +6,7 @@
 
 import { View, StatusBar, Platform } from "react-native";
 import React, { Component } from "react";
-import Expo from "expo";
+import { Constants, Svg } from "expo";
 
 import { theme } from "../../constants";
 import { getStyles } from "../../utils";
@@ -107,31 +107,31 @@ export default class Statusbar extends Component<PropsType, StateType> {
           }
         />
         {amethist || esmerald || transparent ? null : (
-          <Expo.Svg
-            height={Expo.Constants.statusBarHeight}
+          <Svg
+            height={Constants.statusBarHeight}
             width={theme.layout.width}
           >
-            <Expo.Svg.Defs>
-              <Expo.Svg.LinearGradient
+            <Svg.Defs>
+              <Svg.LinearGradient
                 id="grad"
                 x1="0"
                 y1="0"
                 x2={theme.layout.width}
                 y2="0"
               >
-                <Expo.Svg.Stop
+                <Svg.Stop
                   offset="0"
                   stopColor={theme.colors.amethist}
                   stopOpacity="1"
                 />
-                <Expo.Svg.Stop
+                <Svg.Stop
                   offset="1"
                   stopColor={theme.colors.esmerald}
                   stopOpacity="1"
                 />
-              </Expo.Svg.LinearGradient>
-            </Expo.Svg.Defs>
-            <Expo.Svg.Rect
+              </Svg.LinearGradient>
+            </Svg.Defs>
+            <Svg.Rect
               x={0}
               y={0}
               width={theme.layout.width}
@@ -140,7 +140,7 @@ export default class Statusbar extends Component<PropsType, StateType> {
               stroke="transparent"
               fill="url(#grad)"
             />
-          </Expo.Svg>
+          </Svg>
         )}
       </View>
     );

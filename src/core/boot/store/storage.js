@@ -5,7 +5,7 @@
  */
 /* eslint-disable arrow-body-style, implicit-arrow-linebreak  */
 
-import Expo from "expo";
+import { SecureStore } from "expo";
 
 import { config, state } from "../../constants";
 
@@ -50,14 +50,11 @@ const replacer = (key: string, replaceCharacter: string): string => {
 const createSecureStorage = (options: OpsType): StorageType => {
   const { replaceCharacter } = options;
   const getItem = (key: string): Promise<mixed> => {
-    return Expo.SecureStore.getItemAsync(
-      replacer(key, replaceCharacter),
-      options
-    );
+    return SecureStore.getItemAsync(replacer(key, replaceCharacter), options);
   };
 
   const setItem = async (key: string, value: mixed): Promise<mixed> => {
-    return Expo.SecureStore.setItemAsync(
+    return SecureStore.setItemAsync(
       replacer(key, replaceCharacter),
       value,
       options
@@ -65,7 +62,7 @@ const createSecureStorage = (options: OpsType): StorageType => {
   };
 
   const removeItem = (key: string): Promise<mixed> => {
-    return Expo.SecureStore.deleteItemAsync(
+    return SecureStore.deleteItemAsync(
       replacer(key, replaceCharacter),
       options
     );
@@ -79,7 +76,7 @@ const createSecureStorage = (options: OpsType): StorageType => {
     const multiRemoveStatus = await Promise.all(
       keys.map(
         (key: string): Promise<mixed> => {
-          return Expo.SecureStore.deleteItemAsync(
+          return SecureStore.deleteItemAsync(
             replacer(key, replaceCharacter),
             options
           );

@@ -6,7 +6,7 @@
 /* eslint-disable global-require */
 
 import React from "react";
-import Expo from "expo";
+import { Constants } from "expo";
 
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
@@ -38,11 +38,11 @@ const { width } = theme.layout;
 const HeaderGradientBg = (
   <View
     style={{
-      height: Header.HEIGHT + Expo.Constants.statusBarHeight
+      height: Header.HEIGHT + Constants.statusBarHeight
     }}
   >
     <Expo.Svg
-      height={Header.HEIGHT + Expo.Constants.statusBarHeight}
+      height={Header.HEIGHT + Constants.statusBarHeight}
       width={width}
     >
       <Expo.Svg.Defs>
@@ -55,7 +55,7 @@ const HeaderGradientBg = (
         x={0}
         y={0}
         width={width}
-        height={Header.HEIGHT + Expo.Constants.statusBarHeight}
+        height={Header.HEIGHT + Constants.statusBarHeight}
         strokeWidth={0}
         stroke="transparent"
         fill="url(#grad)"

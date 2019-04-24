@@ -4,7 +4,7 @@
  * @flow
  */
 
-import Expo from "expo";
+import { Constants } from "expo";
 import { amethist, esmerald } from "./_constants";
 import { width } from "./_layout";
 
@@ -13,7 +13,7 @@ import { width } from "./_layout";
 export default {
   default: {
     statusbar: {
-      height: Expo.Constants.statusBarHeight,
+      height: Constants.statusBarHeight,
       position: "absolute",
       borderWidth: 0,
       zIndex: 1,

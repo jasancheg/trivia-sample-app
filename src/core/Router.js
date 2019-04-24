@@ -6,7 +6,7 @@
 /* eslint-disable no-unused-vars */
 
 import React from "react";
-import { createDrawerNavigator, createStackNavigator } from "react-navigation";
+import { createAppContainer, createDrawerNavigator, createStackNavigator } from "react-navigation";
 
 import { FooterTabNavigation, Router } from "./components";
 
@@ -53,7 +53,7 @@ const Drawer = createDrawerNavigator(
   }
 );
 
-export default createStackNavigator(
+const AppNavigator = createStackNavigator(
   {
     SignIn: { screen: SignIn },
     SignUp: { screen: SignUp },
@@ -74,3 +74,7 @@ export default createStackNavigator(
     })
   }
 );
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default AppContainer;

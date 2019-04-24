@@ -7,7 +7,7 @@
 import React from "react";
 import { createBottomTabNavigator, NavigationEvents } from "react-navigation";
 import { View } from "react-native";
-import Expo from "expo";
+import { Svg } from "expo";
 
 import Notifications from "../../../screens/Notifications";
 import Profile from "../../../screens/Profile";
@@ -78,14 +78,14 @@ const tabBarComponent = (props: {}): React$Element<*> => {
     <View style={styles.container}>
       <NavigationEvents onWillFocus={navEvent} onDidFocus={navEvent} />
       <View style={styles.bg}>
-        <Expo.Svg height={footerNavHeight} width={width}>
-          <Expo.Svg.Defs>
-            <Expo.Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
-              <Expo.Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
-              <Expo.Svg.Stop offset="1" stopColor={esmerald} stopOpacity="1" />
-            </Expo.Svg.LinearGradient>
-          </Expo.Svg.Defs>
-          <Expo.Svg.Rect
+        <Svg height={footerNavHeight} width={width}>
+          <Svg.Defs>
+            <Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
+              <Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
+              <Svg.Stop offset="1" stopColor={esmerald} stopOpacity="1" />
+            </Svg.LinearGradient>
+          </Svg.Defs>
+          <Svg.Rect
             x={0}
             y={0}
             width={width}
@@ -94,7 +94,7 @@ const tabBarComponent = (props: {}): React$Element<*> => {
             stroke="transparent"
             fill="url(#grad)"
           />
-        </Expo.Svg>
+        </Svg>
       </View>
       <View style={styles.contents}>
         <FooterNav {...props} />
