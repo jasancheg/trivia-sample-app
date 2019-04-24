@@ -84,9 +84,8 @@ export default class Setup extends Component<PropsType, StateType> {
     });
 
     const images = [
-      require("../../assets/whitelogo.png"),
-      require("../../assets/logo.png"),
-      require("../../assets/icon.png")
+      require("../../assets/images/logo.png"),
+      require("../../assets/images/icon.png")
     ];
 
     const cacheImages = images.map(
