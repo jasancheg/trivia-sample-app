@@ -11,7 +11,7 @@ import { Constants, Svg } from "expo";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 import { DrawerActions, Header } from "react-navigation";
-import { TouchableOpacity, View, Image } from "react-native";
+import { TouchableOpacity, View, Image, Platform } from "react-native";
 
 import SideBar from "../../../screens/Sidebar";
 
@@ -35,14 +35,16 @@ export type NaviType = {
 const { amethist, esmerald } = theme.colors;
 const { width } = theme.layout;
 
+const statusBarHeight = Platform.OS === "ios" ? 0 : Constants.statusBarHeight;
+
 const HeaderGradientBg = (
   <View
     style={{
-      height: Header.HEIGHT + Constants.statusBarHeight
+      height: Header.HEIGHT + statusBarHeight
     }}
   >
     <Svg
-      height={Header.HEIGHT + Constants.statusBarHeight}
+      height={Header.HEIGHT + statusBarHeight}
       width={width}
     >
       <Svg.Defs>
@@ -55,7 +57,7 @@ const HeaderGradientBg = (
         x={0}
         y={0}
         width={width}
-        height={Header.HEIGHT + Constants.statusBarHeight}
+        height={Header.HEIGHT + statusBarHeight}
         strokeWidth={0}
         stroke="transparent"
         fill="url(#grad)"

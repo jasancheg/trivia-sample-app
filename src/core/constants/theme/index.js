@@ -11,8 +11,8 @@ import layout from "./_layout";
 import colors from "./_colors";
 import fonts from "./_fonts";
 
-import footerTabNavigation from "./footertabnavigation";
-import splashLoading from "./splashloading";
+import footerTabNavigation from "./footerTabNavigation";
+import splashLoading from "./splashLoading";
 import tabBarIcon from "./tabbaricon";
 import footerNav from "./footernav";
 import hamburger from "./hamburger";

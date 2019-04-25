@@ -18,7 +18,7 @@ import {
   Platform,
   View
 } from "react-native";
-import { Theme } from "../../constants";
+import { theme } from "../../constants";
 import {
   getComposedStyles,
   getIconType,
@@ -31,7 +31,7 @@ import Text from "../Text";
 // define component styles
 const styles = StyleSheet.create({
   default: {
-    ...Theme.button.default
+    ...theme.button.default
   }
 });
 

@@ -47,8 +47,7 @@ const Drawer = createDrawerNavigator(
     },
     about: {
       screen: About
-    },
-    
+    }
   },
   {
     initialRouteName: "footerTabNavigation",
@@ -65,14 +64,16 @@ const AppNavigator = createStackNavigator({
       headerTitle: HeaderTitle(navigation),
       headerRight: HeaderRight(navigation),
       headerBackground: HeaderGradientBg,
-      headerLeft: HeaderLeft(navigation),
-      headerTransparent: true,
-      headerTintColor: "#fff",
-      headerStyle: {}
+      headerLeft: HeaderLeft(navigation)
+      // headerTransparent: true,
+      // headerTintColor: "#fff",
+      // headerStyle: {}
     })
   }
 });
 
-const AppContainer = createAppContainer(AppNavigator);
+export default AppNavigator;
 
-export default AppContainer;
+// const AppContainer = createAppContainer(AppNavigator);
+
+// export default AppContainer;
