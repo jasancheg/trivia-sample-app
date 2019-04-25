@@ -56,10 +56,22 @@ const Drawer = createDrawerNavigator(
   }
 );
 
-const AppNavigator = createStackNavigator(
-  { Drawer: { screen: Drawer } },
-  { headerMode: "screen" }
-);
+const AppNavigator = createStackNavigator({
+  Drawer: {
+    screen: Drawer,
+    navigationOptions: ({ navigation }: NaviType): {} => ({
+      headerMode: "screen",
+      headerTitleStyle: { flex: 1, textAlign: "center", fontWeight: "bold" },
+      headerTitle: HeaderTitle(navigation),
+      headerRight: HeaderRight(navigation),
+      headerBackground: HeaderGradientBg,
+      headerLeft: HeaderLeft(navigation),
+      headerTransparent: true,
+      headerTintColor: "#fff",
+      headerStyle: {}
+    })
+  }
+});
 
 const AppContainer = createAppContainer(AppNavigator);
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/default-props-match-prop-types */
 /**
  * ./src/core/components/Text/index.js
  *
