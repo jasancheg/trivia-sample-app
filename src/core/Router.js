@@ -6,14 +6,9 @@
 /* eslint-disable no-unused-vars */
 
 import React from "react";
-import {
-  createDrawerNavigator,
-  createStackNavigator,
-  createAppContainer
-} from "react-navigation";
+import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 
 import { FooterTabNavigation, Router } from "./components";
-
 import Notifications from "../screens/Notifications";
 import Profile from "../screens/Profile";
 import Score from "../screens/Score";
@@ -55,25 +50,27 @@ const Drawer = createDrawerNavigator(
   }
 );
 
-const AppNavigator = createStackNavigator({
-  Drawer: {
-    screen: Drawer,
-    navigationOptions: ({ navigation }: NaviType): {} => ({
-      headerMode: "screen",
-      headerTitleStyle: { flex: 1, textAlign: "center", fontWeight: "bold" },
-      headerTitle: HeaderTitle(navigation),
-      headerRight: HeaderRight(navigation),
-      headerBackground: HeaderGradientBg,
-      headerLeft: HeaderLeft(navigation)
-      // headerTransparent: true,
-      // headerTintColor: "#fff",
-      // headerStyle: {}
-    })
+export default createStackNavigator(
+  {
+    Drawer: {
+      screen: Drawer,
+      navigationOptions: ({ navigation }: NaviType): {} => ({
+        headerTitleStyle: { flex: 1, textAlign: "center" },
+        headerTitle: HeaderTitle(navigation),
+        headerRight: HeaderRight(navigation),
+        headerBackground: HeaderGradientBg,
+        headerLeft: HeaderLeft(navigation)
+        // headerTransparent: true,
+        // headerTintColor: "#fff",
+        // headerStyle: {}
+      })
+    }
+  },
+  {
+    initialRouteName: "Drawer",
+    headerMode: "screen"
   }
-});
-
-export default AppNavigator;
+);
 
 // const AppContainer = createAppContainer(AppNavigator);
-
 // export default AppContainer;

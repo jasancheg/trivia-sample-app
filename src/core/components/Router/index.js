@@ -43,10 +43,7 @@ const HeaderGradientBg = (
       height: Header.HEIGHT + statusBarHeight
     }}
   >
-    <Svg
-      height={Header.HEIGHT + statusBarHeight}
-      width={width}
-    >
+    <Svg height={Header.HEIGHT + statusBarHeight} width={width}>
       <Svg.Defs>
         <Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
           <Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
