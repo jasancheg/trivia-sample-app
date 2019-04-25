@@ -11,9 +11,9 @@ import { Svg } from "expo";
 
 import Notifications from "../../../screens/Notifications";
 import Profile from "../../../screens/Profile";
-import Orders from "../../../screens/Orders";
-import Search from "../../../screens/Search";
-import Home from "../../../screens/Home";
+import Score from "../../../screens/Score";
+import About from "../../../screens/About";
+import Play from "../../../screens/Play";
 import { theme } from "../../constants";
 import { getStyles } from "../../utils";
 import FooterNav from "../FooterNav";
@@ -32,25 +32,25 @@ type PayloadType = {
 
 const styles = getStyles({}, "footerTabNavigation");
 
-const HomeScreen = ({
+const PlayScreen = ({
   screenProps,
   navigation
-}: ScreenObjType): React$Element<typeof Home> => (
-  <Home navigation={navigation} />
+}: ScreenObjType): React$Element<typeof Play> => (
+  <Play navigation={navigation} />
 );
 
-const SearchScreen = ({
+const AboutScreen = ({
   screenProps,
   navigation
-}: ScreenObjType): React$Element<typeof Search> => (
-  <Search navigation={navigation} />
+}: ScreenObjType): React$Element<typeof About> => (
+  <About navigation={navigation} />
 );
 
-const OrdersScreen = ({
+const ScoreScreen = ({
   screenProps,
   navigation
-}: ScreenObjType): React$Element<typeof Orders> => (
-  <Orders navigation={navigation} />
+}: ScreenObjType): React$Element<typeof Score> => (
+  <Score navigation={navigation} />
 );
 
 const ProfileScreen = ({
@@ -105,10 +105,10 @@ const tabBarComponent = (props: {}): React$Element<*> => {
 
 const FooterTabNavigation = createBottomTabNavigator(
   {
-    home: { screen: HomeScreen },
-    search: { screen: SearchScreen },
-    orders: { screen: OrdersScreen },
+    play: { screen: PlayScreen },
+    score: { screen: ScoreScreen },
     profile: { screen: ProfileScreen },
+    about: { screen: AboutScreen },
     notifications: { screen: NotificationsScreen }
   },
   {

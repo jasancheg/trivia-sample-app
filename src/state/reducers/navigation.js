@@ -6,7 +6,7 @@
 
 import type { ActionType } from "../actions/type";
 
-export type TabType = "home" | "search" | "history" | "user";
+export type TabType = "play" | "score" | "profile" | "notifications";
 export type DayType = 1 | 2;
 
 type StateType = {
@@ -14,7 +14,7 @@ type StateType = {
   day: DayType
 };
 
-const initialState: StateType = { tab: "home", day: 1 };
+const initialState: StateType = { tab: "play", day: 1 };
 
 function navigation(
   state: StateType = initialState,

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 
-export default class Home extends Component {
+export default class Score extends Component {
   static navigationOptions = {
-    title: "Home"
+    title: "Score History"
   };
 
   render() {
@@ -16,28 +16,28 @@ export default class Home extends Component {
         }}
       >
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
         <View>
-          <Text> Home </Text>
+          <Text> Score History </Text>
         </View>
       </View>
     );

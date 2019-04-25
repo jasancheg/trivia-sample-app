@@ -359,31 +359,31 @@ const examples = [
       return (
         <View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <View>
-            <Text>Search</Text>
+            <Text>About</Text>
           </View>
           <Tester type="timing" config={{ duration: 1000 }}>
             {anim => (
@@ -437,9 +437,9 @@ export default examples[0].render;
 // import React, { Component } from "react";
 // import { View, Text } from "react-native";
 
-// export default class Search extends Component {
+// export default class About extends Component {
 //   static navigationOptions = {
-//     title: "Search"
+//     title: "About"
 //   };
 
 //   render() {
@@ -452,28 +452,28 @@ export default examples[0].render;
 //         }}
 //       >
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //         <View>
-//           <Text> Search </Text>
+//           <Text> About </Text>
 //         </View>
 //       </View>
 //     );

@@ -93,6 +93,7 @@ export default class FooterNav extends Component<PropsType, StateType> {
    */
   goTo(route: string): void {
     const { navigation } = this.props;
+    console.log(route, this.props)
     // $FlowFixMe
     navigation.navigate(route);
   }
@@ -126,7 +127,7 @@ export default class FooterNav extends Component<PropsType, StateType> {
     return (
       <View ref={this.setFooterNavRef} style={container}>
         <View style={item}>
-          <TouchableOpacity onPress={this.goTo(PLAY)}>
+          <TouchableOpacity onPress={(): void => this.goTo(PLAY)}>
             <TabBarIcon
               focused={activeTab === PLAY}
               name={ios ? "videogame-asset" : "gamepad-variant"}
@@ -137,7 +138,7 @@ export default class FooterNav extends Component<PropsType, StateType> {
           </TouchableOpacity>
         </View>
         <View style={item}>
-          <TouchableOpacity onPress={this.goTo(SCORE)}>
+          <TouchableOpacity onPress={(): void => this.goTo(SCORE)}>
             <TabBarIcon
               focused={activeTab === SCORE}
               name={ios ? "poll" : "clipboard-pulse-outline"}
@@ -148,7 +149,7 @@ export default class FooterNav extends Component<PropsType, StateType> {
           </TouchableOpacity>
         </View>
         <View style={item}>
-          <TouchableOpacity onPress={this.goTo(PROFILE)}>
+          <TouchableOpacity onPress={(): void => this.goTo(PROFILE)}>
             <TabBarIcon
               focused={activeTab === PROFILE}
               name={ios ? "account-circle" : "account-circle"}

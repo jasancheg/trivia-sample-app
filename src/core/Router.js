@@ -6,17 +6,19 @@
 /* eslint-disable no-unused-vars */
 
 import React from "react";
-import { createAppContainer, createDrawerNavigator, createStackNavigator } from "react-navigation";
+import {
+  createDrawerNavigator,
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
 
 import { FooterTabNavigation, Router } from "./components";
 
 import Notifications from "../screens/Notifications";
-import SignUp from "../screens/SignUp";
-import SignIn from "../screens/SignIn";
 import Profile from "../screens/Profile";
-import Orders from "../screens/Orders";
-import Search from "../screens/Search";
-import Home from "../screens/Home";
+import Score from "../screens/Score";
+import About from "../screens/About";
+import Play from "../screens/Play";
 
 import type { NaviType } from "./components/Router";
 
@@ -31,21 +33,22 @@ const {
 const Drawer = createDrawerNavigator(
   {
     footerTabNavigation: { screen: FooterTabNavigation },
-    home: {
-      screen: Home
+    play: {
+      screen: Play
     },
-    search: {
-      screen: Search
-    },
-    orders: {
-      screen: Orders
+    score: {
+      screen: Score
     },
     profile: {
       screen: Profile
     },
     notifications: {
       screen: Notifications
-    }
+    },
+    about: {
+      screen: About
+    },
+    
   },
   {
     initialRouteName: "footerTabNavigation",
@@ -54,25 +57,8 @@ const Drawer = createDrawerNavigator(
 );
 
 const AppNavigator = createStackNavigator(
-  {
-    SignIn: { screen: SignIn },
-    SignUp: { screen: SignUp },
-    Drawer: { screen: Drawer }
-  },
-  {
-    initialRouteName: "Drawer",
-    headerMode: "screen",
-    navigationOptions: ({ navigation }: NaviType): {} => ({
-      headerTitleStyle: { flex: 1, textAlign: "center", fontWeight: "bold" },
-      headerTitle: HeaderTitle(navigation),
-      headerRight: HeaderRight(navigation),
-      headerBackground: HeaderGradientBg,
-      headerLeft: HeaderLeft(navigation),
-      headerTransparent: true,
-      headerTintColor: "#fff",
-      headerStyle: {}
-    })
-  }
+  { Drawer: { screen: Drawer } },
+  { headerMode: "screen" }
 );
 
 const AppContainer = createAppContainer(AppNavigator);

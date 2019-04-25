@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 
-export default class Order extends Component {
+export default class Play extends Component {
   static navigationOptions = {
-    title: "Orders History"
+    title: "Play"
   };
 
   render() {
@@ -16,28 +16,28 @@ export default class Order extends Component {
         }}
       >
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
         <View>
-          <Text> Orders History </Text>
+          <Text> Play </Text>
         </View>
       </View>
     );

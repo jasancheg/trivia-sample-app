@@ -6,7 +6,7 @@
 /* eslint-disable global-require */
 
 import React from "react";
-import { Constants } from "expo";
+import { Constants, Svg } from "expo";
 
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
@@ -41,17 +41,17 @@ const HeaderGradientBg = (
       height: Header.HEIGHT + Constants.statusBarHeight
     }}
   >
-    <Expo.Svg
+    <Svg
       height={Header.HEIGHT + Constants.statusBarHeight}
       width={width}
     >
-      <Expo.Svg.Defs>
-        <Expo.Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
-          <Expo.Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
-          <Expo.Svg.Stop offset="1" stopColor={esmerald} stopOpacity="1" />
-        </Expo.Svg.LinearGradient>
-      </Expo.Svg.Defs>
-      <Expo.Svg.Rect
+      <Svg.Defs>
+        <Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
+          <Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
+          <Svg.Stop offset="1" stopColor={esmerald} stopOpacity="1" />
+        </Svg.LinearGradient>
+      </Svg.Defs>
+      <Svg.Rect
         x={0}
         y={0}
         width={width}
@@ -60,7 +60,7 @@ const HeaderGradientBg = (
         stroke="transparent"
         fill="url(#grad)"
       />
-    </Expo.Svg>
+    </Svg>
   </View>
 );
 
@@ -74,7 +74,7 @@ export const HeaderRight = (
   <View style={{ marginRight: 10 }}>
     <TouchableOpacity
       onPress={(): void => {
-        navigation.navigate("notifications");
+        navigation.navigate("play");
       }}
     >
       <Icon name="bell" size={28} color="white" />
@@ -103,7 +103,7 @@ const HeaderTitle = (
 ): React$Element<typeof Image> => (
   <Image
     style={{ width: 90, height: 35, flex: 1 }}
-    source={assets.images.whitelogo}
+    source={assets.images.logo}
     resizeMode="contain"
   />
 );
