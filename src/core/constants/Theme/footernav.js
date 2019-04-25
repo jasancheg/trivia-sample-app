@@ -11,12 +11,28 @@ import { footerNavHeight } from "./_constants";
 // - each classname supports android and ios keys form specific platform specs
 const styles = {
   def: {
-    footerNav: {
+    container: {
       justifyContent: "space-between",
       height: footerNavHeight,
       flexDirection: "row",
       alignSelf: "stretch",
-      flex: 1
+      flex: 1,
+      android: {},
+      ios: {}
+    },
+    item: {
+      justifyContent: "center",
+      alignItems: "center",
+      flexGrow: 1,
+      flex: 1,
+      android: {},
+      ios: {}
+    },
+    text: {
+      color: "#ccc"
+    },
+    textActive: {
+      color: "#fff"
     }
   }
 };

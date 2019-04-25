@@ -34,8 +34,8 @@ export const center = "center";
 export const right = "right";
 
 // font sizes
-export const fontSizeNote = normalizeText(12);
-export const fontSize = normalizeText(14);
+export const fontSizeNote = normalizeText(11);
+export const fontSize = normalizeText(12);
 export const h1 = normalizeText(40);
 export const h2 = normalizeText(34);
 export const h3 = normalizeText(28);
@@ -95,6 +95,12 @@ export const raised = Platform.select({
   }
 });
 
-// footerNav component
+// footerNav and tabIcon components
 export const footerNavSeparatorHeight = 6;
 export const footerNavHeight = 60;
+export const tabBar = "#fefefe";
+
+export const tabIconSelected = "#fff";
+export const tabIconMarginBottom = -3;
+export const tabIconDefault = "#ccc";
+export const tabIconSize = 28;

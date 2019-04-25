@@ -5,62 +5,116 @@
  */
 
 import React from "react";
-import { Platform } from "react-native";
-import { createStackNavigator, createBottomTabNavigator } from "react-navigation";
+import { createBottomTabNavigator, NavigationEvents } from "react-navigation";
+import { View } from "react-native";
+import { Svg } from "expo";
 
-import TabBarIcon from "../components/TabBarIcon";
-import HomeScreen from "../screens/HomeScreen";
-import LinksScreen from "../screens/LinksScreen";
-import SettingsScreen from "../screens/SettingsScreen";
+import Notifications from "../../../screens/Notifications";
+import Profile from "../../../screens/Profile";
+import Orders from "../../../screens/Orders";
+import Search from "../../../screens/Search";
+import Home from "../../../screens/Home";
+import { theme } from "../../constants";
+import { getStyles } from "../../utils";
+import FooterNav from "../FooterNav";
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-});
+import { footerNavHeight } from "../../constants/theme/_constants";
 
-HomeStack.navigationOptions = {
-  tabBarLabel: "Home",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === "ios"
-          ? `ios-information-circle${focused ? "" : "-outline"}`
-          : 'md-information-circle'
-      }
-    />
-  ),
+type ScreenObjType = {
+  screenProps: {},
+  navigation: {}
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
+type PayloadType = {
+  type: string,
+  state: {}
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
+const styles = getStyles({}, "footerTabNavigation");
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
+const HomeScreen = ({
+  screenProps,
+  navigation
+}: ScreenObjType): React$Element<typeof Home> => (
+  <Home navigation={navigation} />
+);
+
+const SearchScreen = ({
+  screenProps,
+  navigation
+}: ScreenObjType): React$Element<typeof Search> => (
+  <Search navigation={navigation} />
+);
+
+const OrdersScreen = ({
+  screenProps,
+  navigation
+}: ScreenObjType): React$Element<typeof Orders> => (
+  <Orders navigation={navigation} />
+);
+
+const ProfileScreen = ({
+  screenProps,
+  navigation
+}: ScreenObjType): React$Element<typeof Profile> => (
+  <Profile navigation={navigation} />
+);
+
+const NotificationsScreen = ({
+  screenProps,
+  navigation
+}: ScreenObjType): React$Element<typeof Notifications> => (
+  <Notifications navigation={navigation} />
+);
+
+const tabBarComponent = (props: {}): React$Element<*> => {
+  const navEvent = (payload: PayloadType): void => {
+    console.log(payload.type, Object.keys(payload));
+  };
+  const { amethist, esmerald } = theme.colors;
+  const { width } = theme.layout;
+
+  return (
+    <View style={styles.container}>
+      <NavigationEvents onWillFocus={navEvent} onDidFocus={navEvent} />
+      <View style={styles.bg}>
+        <Svg height={footerNavHeight} width={width}>
+          <Svg.Defs>
+            <Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
+              <Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
+              <Svg.Stop offset="1" stopColor={esmerald} stopOpacity="1" />
+            </Svg.LinearGradient>
+          </Svg.Defs>
+          <Svg.Rect
+            x={0}
+            y={0}
+            width={width}
+            height={footerNavHeight}
+            strokeWidth={0}
+            stroke="transparent"
+            fill="url(#grad)"
+          />
+        </Svg>
+      </View>
+      <View style={styles.contents}>
+        <FooterNav {...props} />
+      </View>
+    </View>
+  );
 };
 
-export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
-});
+const FooterTabNavigation = createBottomTabNavigator(
+  {
+    home: { screen: HomeScreen },
+    search: { screen: SearchScreen },
+    orders: { screen: OrdersScreen },
+    profile: { screen: ProfileScreen },
+    notifications: { screen: NotificationsScreen }
+  },
+  {
+    tabBarComponent,
+    lazy: true
+  }
+);
+
+export default FooterTabNavigation;

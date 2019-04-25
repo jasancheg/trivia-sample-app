@@ -4,18 +4,22 @@
  * @flow
  */
 
-// - it is a propose for multi theming, states, and classnames
-// - it separates style as 'states' or classname definitions
-// - each classname supports android and ios keys form specific platform specs
+import {
+  tabIconMarginBottom,
+  tabIconSelected,
+  tabIconDefault,
+  tabIconSize
+} from "./_constants";
 
 const styles = {
-  def: {
-    icon: {
-      marginBottom: -3,
-      android: {},
-      ios: {}
-    }
-  }
+  justifyContent: "center",
+  alignItems: "center"
 };
 
-export default styles;
+export default {
+  tabIconMarginBottom,
+  tabIconSelected,
+  tabIconDefault,
+  tabIconSize,
+  styles
+};

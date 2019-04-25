@@ -23,6 +23,7 @@ type DefaultPropsType = {
   capitalize?: boolean,
   uppercase?: boolean,
   lowercase?: boolean,
+  truncate?: boolean,
   primary?: boolean,
   success?: boolean,
   warning?: boolean,
@@ -133,11 +134,10 @@ export default class Text extends Component<PropsType, StateType> {
 
   /**
    * get composed styles from received props
+   * - respect the entered order of custom props
    */
   getStyles(): ComponentStylesType {
-    return this.styles.text === null
-      ? getStyles(this.props, this.cName)
-      : this.styles;
+    return getStyles(this.props, this.cName);
   }
 
   /**
@@ -152,7 +152,7 @@ export default class Text extends Component<PropsType, StateType> {
       "lowercase",
       "truncate"
     ];
-    const { children, truncate } = this.props;
+    const { children, truncate, style } = this.props;
     const keys = Object.keys(this.props);
     let text: TextType = children;
     let newProps = {};
@@ -195,7 +195,8 @@ export default class Text extends Component<PropsType, StateType> {
 
     // initialize and add styles definition
     this.styles = this.getStyles();
-    newProps.style = this.styles.text;
+    // initialize and add styles definition
+    newProps.style = style ? [this.styles.text, style] : this.styles.text;
 
     return { text, newProps };
   }

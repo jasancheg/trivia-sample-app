@@ -47,7 +47,6 @@ export default async (
   const didReset = await ensureCompatibility();
 
   const store = createStore(
-    // $FlowFixMe
     persistedReducer,
     state.initialState,
     applyMiddleware(thunk, promise, array, analytics, logger)

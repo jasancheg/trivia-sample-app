@@ -5,16 +5,10 @@
  */
 
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import {
-  MaterialCommunityIcons as Icon,
-  MaterialIcons as IconTwo
-} from "@expo/vector-icons";
-// import Expo from "expo";
-
-// import { footerNavHeight } from "../../constants/theme/_constants";
-// import { theme } from "../../constants";
+import { View, TouchableOpacity, Platform } from "react-native";
 import { getStyles } from "../../utils";
+import TabBarIcon from "../TabBarIcon";
+import Text from "../Text";
 
 import type { StyleSheetType } from "../../flow";
 
@@ -27,7 +21,9 @@ type PropsType = {
   ...DefaultPropsType
 };
 type StateType = {};
-type ComponentStylesType = { footerNav: ?number } | StyleSheetType;
+type ComponentStylesType =
+  | { container: ?number, item: ?number, text: ?number, textActive: ?number }
+  | StyleSheetType;
 type RootType = ?React$Element<View>;
 
 /**
@@ -46,7 +42,7 @@ export default class FooterNav extends Component<PropsType, StateType> {
    */
   static defaultProps: DefaultPropsType = {
     theme: null,
-    navigation: {}
+    navigation: { navigate: null }
   };
 
   constructor(props: PropsType): void {
@@ -54,7 +50,10 @@ export default class FooterNav extends Component<PropsType, StateType> {
 
     this._root = null;
     this.styles = {
-      footerNav: null
+      container: null,
+      item: null,
+      text: null,
+      textActive: null
     };
 
     this.setFooterNavRef = (element: RootType): void => {
@@ -70,11 +69,32 @@ export default class FooterNav extends Component<PropsType, StateType> {
 
   /**
    * get composed styles from received props
+   * - respect the entered order of custom props
    */
   getStyles(): ComponentStylesType {
-    return this.styles.footerNav === null
-      ? getStyles(this.props, this.cName)
-      : this.styles;
+    return getStyles(this.props, this.cName);
+  }
+
+  /**
+   * getTextStyles
+   * @param {string} route active route name
+   * @returns {number} text styles
+   */
+  getTextStyles(route: string): ?number {
+    const activeTab = "play";
+    const { text, textActive } = this.styles;
+
+    return activeTab === route ? textActive : text;
+  }
+
+  /**
+   * getTextStyles
+   * @param {string} route active route name
+   */
+  goTo(route: string): void {
+    const { navigation } = this.props;
+    // $FlowFixMe
+    navigation.navigate(route);
   }
 
   /**
@@ -93,58 +113,49 @@ export default class FooterNav extends Component<PropsType, StateType> {
    * render FooterNav component
    */
   render(): React$Element<typeof View> {
+    const ios = Platform.OS === "ios";
+    const PROFILE = "profile";
+    const SCORE = "score";
+    const PLAY = "play";
+    // const { activeTab } = this.props;
+    const activeTab = PLAY;
     this.styles = this.getStyles();
 
-    const { navigation } = this.props;
-    const { footerNav } = this.styles;
+    const { container, item } = this.styles;
 
     return (
-      <View ref={this.setFooterNavRef} style={footerNav}>
-        <View>
-          <TouchableOpacity
-            onPress={(): void => {
-              navigation.navigate("home");
-            }}
-          >
-            <View>
-              <Icon name="home" size={28} color="white" />
-            </View>
-            <View>
-              <Text style={{ color: "#fff" }}>Inicio</Text>
-            </View>
+      <View ref={this.setFooterNavRef} style={container}>
+        <View style={item}>
+          <TouchableOpacity onPress={this.goTo(PLAY)}>
+            <TabBarIcon
+              focused={activeTab === PLAY}
+              name={ios ? "videogame-asset" : "gamepad-variant"}
+            />
+            <Text capitalize style={this.getTextStyles(PLAY)}>
+              {PLAY}
+            </Text>
           </TouchableOpacity>
         </View>
-        <View>
-          <TouchableOpacity
-            onPress={(): void => {
-              navigation.navigate("search");
-            }}
-          >
-            <View>
-              <IconTwo name="search" size={28} color="white" />
-            </View>
+        <View style={item}>
+          <TouchableOpacity onPress={this.goTo(SCORE)}>
+            <TabBarIcon
+              focused={activeTab === SCORE}
+              name={ios ? "poll" : "clipboard-pulse-outline"}
+            />
+            <Text capitalize style={this.getTextStyles(SCORE)}>
+              {SCORE}
+            </Text>
           </TouchableOpacity>
         </View>
-        <View>
-          <TouchableOpacity
-            onPress={(): void => {
-              navigation.navigate("orders");
-            }}
-          >
-            <View>
-              <Icon name="clipboard-text" size={28} color="white" />
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity
-            onPress={(): void => {
-              navigation.navigate("profile");
-            }}
-          >
-            <View>
-              <Icon name="login" size={28} color="white" />
-            </View>
+        <View style={item}>
+          <TouchableOpacity onPress={this.goTo(PROFILE)}>
+            <TabBarIcon
+              focused={activeTab === PROFILE}
+              name={ios ? "account-circle" : "account-circle"}
+            />
+            <Text capitalize style={this.getTextStyles(PROFILE)}>
+              {PROFILE}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -27,8 +27,8 @@ const getComposedStyles = (props: PropsType, cName: string): {} => {
 
   const listExistingStyleProps = Object.keys(theme[cName]);
   const keys = Object.keys(props);
+  // console.log("AAAAA", keys, listExistingStyleProps);
   let composedStyles = {};
-
   // apply custom styles to each prop in the same received order
   keys.forEach(
     (key: string): void => {
@@ -94,6 +94,7 @@ export default (props: PropsType = {}, cName: string): StyleSheetType => {
   const composedStyles = getComposedStyles(props, cName);
   // custom styles
   const customStyles = props.theme ? props.theme : {};
+
   // full styles object
   const fullStyles = _merge({}, defaultStyles, composedStyles, customStyles);
   // finally filter platform and use StyleSheet for performance
