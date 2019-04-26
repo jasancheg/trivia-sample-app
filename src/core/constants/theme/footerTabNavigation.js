@@ -4,7 +4,7 @@
  * @flow
  */
 
-import { footerNavHeight, amethist } from "./_constants";
+import { footerNavHeight, orange } from "./_constants";
 
 // - it is a propose for multi theming, states, and classnames
 // - it separates style as 'states' or classname definitions
@@ -12,7 +12,7 @@ import { footerNavHeight, amethist } from "./_constants";
 const styles = {
   def: {
     container: {
-      backgroundColor: amethist,
+      backgroundColor: orange,
       height: footerNavHeight,
       position: "relative"
     },

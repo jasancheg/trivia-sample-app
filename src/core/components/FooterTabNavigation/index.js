@@ -30,6 +30,7 @@ type PayloadType = {
   state: {}
 };
 
+// get composed styles from received props
 const styles = getStyles({}, "footerTabNavigation");
 
 const PlayScreen = ({
@@ -71,7 +72,7 @@ const tabBarComponent = (props: {}): React$Element<*> => {
   const navEvent = (payload: PayloadType): void => {
     console.log(payload.type, Object.keys(payload));
   };
-  const { amethist, esmerald } = theme.colors;
+  const { orange, lavender } = theme.colors;
   const { width } = theme.layout;
 
   return (
@@ -81,8 +82,8 @@ const tabBarComponent = (props: {}): React$Element<*> => {
         <Svg height={footerNavHeight} width={width}>
           <Svg.Defs>
             <Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
-              <Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
-              <Svg.Stop offset="1" stopColor={esmerald} stopOpacity="1" />
+              <Svg.Stop offset="0" stopColor={orange} stopOpacity="1" />
+              <Svg.Stop offset="1" stopColor={lavender} stopOpacity="1" />
             </Svg.LinearGradient>
           </Svg.Defs>
           <Svg.Rect

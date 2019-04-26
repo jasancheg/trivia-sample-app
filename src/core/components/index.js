@@ -13,6 +13,7 @@ import Statusbar from "./Statusbar";
 import Button from "./Button";
 import Router from "./Router";
 // import Root from "./Root";
+import Deck from "./Deck";
 import Text from "./Text";
 
 export {
@@ -23,5 +24,6 @@ export {
   Statusbar,
   Button,
   Router,
+  Deck,
   Text
 };

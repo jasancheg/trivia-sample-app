@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 const Trivia = (props: {}): React$Element<typeof Boot> => (
   <Boot {...props}>
     <View style={styles.container}>
+      <Statusbar />
       <App />
     </View>
   </Boot>

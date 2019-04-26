@@ -5,12 +5,14 @@
  */
 
 import React, { Component } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, View, Image } from "react-native";
 
-import { esmerald } from "../../constants/theme/_constants";
-import { getStyles } from "../../utils";
+import { lavender } from "../../constants/theme/_constants";
+import { getStyles, assets } from "../../utils";
 
 import type { StyleSheetType } from "../../flow";
+
+const logo = require("../../../assets/images/logo.png");
 
 // flow types
 type DefaultPropsType = {
@@ -20,7 +22,9 @@ type PropsType = {
   ...DefaultPropsType
 };
 type StateType = {};
-type ComponentStylesType = { splashLoading: ?number } | StyleSheetType;
+type ComponentStylesType =
+  | { splashLoading: ?number, image: ?number }
+  | StyleSheetType;
 type RootType = ?React$Element<typeof View>;
 
 /**
@@ -34,6 +38,15 @@ export default class SplashLoading extends Component<PropsType, StateType> {
   cName: string = "splashLoading";
 
   /**
+   * styles def for the component
+   * @type {Object}
+   */
+  styles: ComponentStylesType = {
+    splashLoading: null,
+    image: null
+  };
+
+  /**
    * define the list of allowed custom props and set default
    * @type {object}
    */
@@ -45,9 +58,8 @@ export default class SplashLoading extends Component<PropsType, StateType> {
     super((props: PropsType));
 
     this._root = null;
-    this.styles = {
-      splashLoading: null
-    };
+    // get composed styles from received props
+    this.styles = getStyles(this.props, this.cName);
 
     this.setSplashLoadingRef = (element: RootType): void => {
       this._root = element;
@@ -61,35 +73,21 @@ export default class SplashLoading extends Component<PropsType, StateType> {
   setSplashLoadingRef: RootType => void;
 
   /**
-   * get composed styles from received props
-   */
-  getStyles(): ComponentStylesType {
-    return this.styles.splashLoading === null
-      ? getStyles(this.props, this.cName)
-      : this.styles;
-  }
-
-  /**
    * the ref element
    * @type {React.Element}
    */
   _root: RootType;
 
   /**
-   * the ref element
-   * @type {Object|null}
-   */
-  styles: ComponentStylesType;
-
-  /**
    * render SplashLoading component
    */
   render(): React$Element<typeof View> {
-    this.styles = this.getStyles();
-
     return (
       <View ref={this.setSplashLoadingRef} style={this.styles.splashLoading}>
-        <ActivityIndicator size="large" color={esmerald} />
+        <View>
+          <Image source={logo} style={this.styles.image} />
+          <ActivityIndicator size="large" color={lavender} />
+        </View>
       </View>
     );
   }

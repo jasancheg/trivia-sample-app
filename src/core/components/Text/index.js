@@ -62,6 +62,14 @@ export default class Text extends Component<PropsType, StateType> {
   cName: string = "text";
 
   /**
+   * styles def for the component
+   * @type {Object}
+   */
+  styles: ComponentStylesType = {
+    text: null
+  };
+
+  /**
    * [listOfCustomProps description]
    * @type {Array}
    */
@@ -118,9 +126,8 @@ export default class Text extends Component<PropsType, StateType> {
     super((props: PropsType));
 
     this._root = null;
-    this.styles = {
-      text: null
-    };
+    // get composed styles from received props
+    this.styles = getStyles(this.props, this.cName);
 
     this.setTextRef = (element: RootType): void => {
       this._root = element;
@@ -132,14 +139,6 @@ export default class Text extends Component<PropsType, StateType> {
    * @type {React.Element}
    */
   setTextRef: RootType => void;
-
-  /**
-   * get composed styles from received props
-   * - respect the entered order of custom props
-   */
-  getStyles(): ComponentStylesType {
-    return getStyles(this.props, this.cName);
-  }
 
   /**
    * apply 'text' transforms and stylized component
@@ -194,8 +193,6 @@ export default class Text extends Component<PropsType, StateType> {
       }
     );
 
-    // initialize and add styles definition
-    this.styles = this.getStyles();
     // initialize and add styles definition
     newProps.style = style ? [this.styles.text, style] : this.styles.text;
 

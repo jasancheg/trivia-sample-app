@@ -1,6 +1,41 @@
 # Trivia sample app
 
-...
+> development in progress
+
+* [https://exp.host/@jasancheg/trivia-sample-app](https://exp.host/@jasancheg/trivia-sample-app)
+
+![Trivia demo app](https://raw.githubusercontent.com/jasancheg/trivia-sample-app/master/src/assets/images/icon.png)
+
+![Trivia is coming](https://raw.githubusercontent.com/jasancheg/trivia-sample-app/master/src/assets/images/splash.png)
+
+![Trivia demo app](https://raw.githubusercontent.com/jasancheg/trivia-sample-app/master/src/assets/images/logo.png)
+
+### The purpose of the demo is to test code strategy in:
+
+- State manager
+- Navigation solution
+- Componentization
+- Communiation in the repo and/or code
+- Best practices with API calls and data
+- Separation of concerns between business and UI logic
+
+best practices in:
+
+- Functionality
+- Code Format
+- Project Structure
+- Scalability
+- Maintainability
+- Use of industry best practices
+
+other features like
+
+- Flow: static type checker with flow, full coverage
+- Data Store persistence, persist in offline
+- Native animations
+- Theme, and styles strategy
+- Performance
+- Graphql
 
 ```sh
 # global dependencies

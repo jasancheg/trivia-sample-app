@@ -5,8 +5,8 @@
  */
 
 import {
-  amethist,
-  esmerald,
+  orange,
+  lavender,
   secondary,
   disabled,
   primary,
@@ -34,8 +34,8 @@ import {
 
 export default {
   // main colors
-  amethist,
-  esmerald,
+  orange,
+  lavender,
   // color palette
   secondary,
   disabled,

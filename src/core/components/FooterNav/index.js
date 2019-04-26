@@ -37,6 +37,17 @@ export default class FooterNav extends Component<PropsType, StateType> {
   cName: string = "footerNav";
 
   /**
+   * styles def for the component
+   * @type {Object}
+   */
+  styles: ComponentStylesType = {
+    container: null,
+    item: null,
+    text: null,
+    textActive: null
+  };
+
+  /**
    * define the list of allowed custom props and set default
    * @type {object}
    */
@@ -49,12 +60,7 @@ export default class FooterNav extends Component<PropsType, StateType> {
     super((props: PropsType));
 
     this._root = null;
-    this.styles = {
-      container: null,
-      item: null,
-      text: null,
-      textActive: null
-    };
+    this.styles = getStyles(this.props, this.cName);
 
     this.setFooterNavRef = (element: RootType): void => {
       this._root = element;
@@ -66,14 +72,6 @@ export default class FooterNav extends Component<PropsType, StateType> {
    * @type {React.Element}
    */
   setFooterNavRef: RootType => void;
-
-  /**
-   * get composed styles from received props
-   * - respect the entered order of custom props
-   */
-  getStyles(): ComponentStylesType {
-    return getStyles(this.props, this.cName);
-  }
 
   /**
    * getTextStyles
@@ -105,12 +103,6 @@ export default class FooterNav extends Component<PropsType, StateType> {
   _root: RootType;
 
   /**
-   * the ref element
-   * @type {Object|null}
-   */
-  styles: ComponentStylesType;
-
-  /**
    * render FooterNav component
    */
   render(): React$Element<typeof View> {
@@ -120,7 +112,6 @@ export default class FooterNav extends Component<PropsType, StateType> {
     const PLAY = "play";
     // const { activeTab } = this.props;
     const activeTab = PLAY;
-    this.styles = this.getStyles();
 
     const { container, item } = this.styles;
 

@@ -4,7 +4,7 @@
  * @flow
  */
 
-import { amethist } from "./_constants";
+import { orange } from "./_constants";
 
 // - it is a propose for multi theming, states, and classnames
 // - it separates style as 'states' or classname definitions
@@ -13,10 +13,16 @@ const styles = {
   def: {
     splashLoading: {
       justifyContent: "space-around",
-      backgroundColor: amethist,
+      alignItems: "center",
+      backgroundColor: orange,
       flexDirection: "row",
       padding: 10,
       flex: 1
+    },
+    image: {
+      width: 200,
+      height: 96,
+      marginBottom: 25
     }
   }
 };

@@ -32,7 +32,7 @@ export type NaviType = {
   navigation: NavigationType
 };
 
-const { amethist, esmerald } = theme.colors;
+const { orange, lavender } = theme.colors;
 const { width } = theme.layout;
 
 const statusBarHeight = Platform.OS === "ios" ? 0 : Constants.statusBarHeight;
@@ -46,8 +46,8 @@ const HeaderGradientBg = (
     <Svg height={Header.HEIGHT + statusBarHeight} width={width}>
       <Svg.Defs>
         <Svg.LinearGradient id="grad" x1="0" y1="0" x2={width} y2="0">
-          <Svg.Stop offset="0" stopColor={amethist} stopOpacity="1" />
-          <Svg.Stop offset="1" stopColor={esmerald} stopOpacity="1" />
+          <Svg.Stop offset="0" stopColor={orange} stopOpacity="1" />
+          <Svg.Stop offset="1" stopColor={lavender} stopOpacity="1" />
         </Svg.LinearGradient>
       </Svg.Defs>
       <Svg.Rect
@@ -89,14 +89,6 @@ const HeaderLeft = (navigation: NavigationType): LeftType => (
   />
 );
 
-const MenuImage = ({ navigation }: NaviType): React$Element<typeof Image> => {
-  if (!navigation.state.isDrawerOpen) {
-    return <Image source={require("../../../assets/temp/menu-button.png")} />;
-  } else {
-    return <Image source={require("../../../assets/temp/left-arrow.png")} />;
-  }
-};
-
 const HeaderTitle = (
   navigation: NavigationType
 ): React$Element<typeof Image> => (
@@ -112,6 +104,5 @@ export default {
   ContentComponent,
   HeaderTitle,
   HeaderRight,
-  HeaderLeft,
-  MenuImage
+  HeaderLeft
 };

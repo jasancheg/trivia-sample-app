@@ -60,9 +60,6 @@ export default createStackNavigator(
         headerRight: HeaderRight(navigation),
         headerBackground: HeaderGradientBg,
         headerLeft: HeaderLeft(navigation)
-        // headerTransparent: true,
-        // headerTintColor: "#fff",
-        // headerStyle: {}
       })
     }
   },

@@ -15,8 +15,8 @@ import type { StyleSheetType } from "../../flow";
 
 // flow types
 type DefaultPropsType = {
-  amethist?: boolean,
-  esmerald?: boolean,
+  orange?: boolean,
+  lavender?: boolean,
   transparent?: boolean,
   theme?: ?{}
 };
@@ -27,7 +27,7 @@ type StateType = {};
 type ComponentStylesType = { statusbar: ?number } | StyleSheetType;
 
 /**
- * Text component
+ * Status bar component
  */
 export default class Statusbar extends Component<PropsType, StateType> {
   /**
@@ -40,62 +40,40 @@ export default class Statusbar extends Component<PropsType, StateType> {
    * [listOfCustomProps description]
    * @type {Array}
    */
-  listOfCustomProps = ["transparent", "esmerald", "amethist"];
+  listOfCustomProps = ["transparent", "lavender", "orange"];
+
+  /**
+   * styles def for the component
+   * @type {Object}
+   */
+  styles: ComponentStylesType = {
+    statusbar: null
+  };
 
   /**
    * define the list of allowed custom props and set default
    * @type {object}
    */
   static defaultProps: DefaultPropsType = {
-    amethist: false,
-    esmerald: false,
+    orange: false,
+    lavender: false,
     transparent: false,
     theme: null
   };
 
   constructor(props: PropsType): void {
     super((props: PropsType));
-
-    this.styles = {
-      statusbar: null
-    };
+    // get composed styles from received props
+    this.styles = getStyles(this.props, this.cName);
   }
-
-  /**
-   * get composed styles from received props
-   */
-  getStyles(): ComponentStylesType {
-    return this.styles.statusbar === null
-      ? getStyles(this.props, this.cName)
-      : this.styles;
-  }
-
-  /**
-   * apply 'text' transforms and stylized component
-   *
-   * - respect the entered order of custom props
-   */
-  denormalize(): void {
-    // initialize and add styles definition
-    this.styles = this.getStyles();
-  }
-
-  /**
-   * the ref element
-   * @type {Object|null}
-   */
-  styles: ComponentStylesType;
 
   /**
    * Render Status bar component
    *
-   * - it allows three custom props "transparent", "esmerald", "amethist"
+   * - it allows three custom props "transparent", "lavender", "orange"
    */
   render(): React$Element<typeof View> {
-    // apply transforms to the received data and extract needed props
-    this.denormalize();
-
-    const { amethist, esmerald, transparent } = this.props;
+    const { orange, lavender, transparent } = this.props;
 
     return (
       <View style={this.styles.statusbar}>
@@ -106,11 +84,8 @@ export default class Statusbar extends Component<PropsType, StateType> {
               : "light-content"
           }
         />
-        {amethist || esmerald || transparent ? null : (
-          <Svg
-            height={Constants.statusBarHeight}
-            width={theme.layout.width}
-          >
+        {orange || lavender || transparent ? null : (
+          <Svg height={Constants.statusBarHeight} width={theme.layout.width}>
             <Svg.Defs>
               <Svg.LinearGradient
                 id="grad"
@@ -121,12 +96,12 @@ export default class Statusbar extends Component<PropsType, StateType> {
               >
                 <Svg.Stop
                   offset="0"
-                  stopColor={theme.colors.amethist}
+                  stopColor={theme.colors.orange}
                   stopOpacity="1"
                 />
                 <Svg.Stop
                   offset="1"
-                  stopColor={theme.colors.esmerald}
+                  stopColor={theme.colors.lavender}
                   stopOpacity="1"
                 />
               </Svg.LinearGradient>
@@ -135,7 +110,7 @@ export default class Statusbar extends Component<PropsType, StateType> {
               x={0}
               y={0}
               width={theme.layout.width}
-              height={70}
+              height={Constants.statusBarHeight}
               strokeWidth={0}
               stroke="transparent"
               fill="url(#grad)"

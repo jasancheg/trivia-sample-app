@@ -5,7 +5,7 @@
  */
 
 import { Constants } from "expo";
-import { amethist, esmerald } from "./_constants";
+import { orange, lavender } from "./_constants";
 import { width } from "./_layout";
 
 // - it is a propose for multi theming, states, and classnames
@@ -21,14 +21,14 @@ const styles = {
       width
     }
   },
-  amethist: {
+  orange: {
     statusbar: {
-      backgroundColor: amethist
+      backgroundColor: orange
     }
   },
-  esmerald: {
+  lavender: {
     statusbar: {
-      backgroundColor: esmerald
+      backgroundColor: lavender
     }
   }
 };

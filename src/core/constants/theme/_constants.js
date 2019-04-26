@@ -44,8 +44,8 @@ export const btnSmallFontSize = normalizeText(14);
 export const btnFontSize = normalizeText(16);
 
 // available colors
-export const amethist = "#e33b29";
-export const esmerald = "rgb(24,160,150)";
+export const orange = "#cd4881";
+export const lavender = "#fe795c";
 export const secondary = "#8F0CE8";
 export const disabled = "#dadee0";
 export const primary = "#007db5";

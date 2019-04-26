@@ -117,7 +117,9 @@ export default class Setup extends Component<PropsType, StateType> {
       persistor
     } = this.state;
 
-    if (!assetsLoaded || !storeCreated || !storeRehydrated) {
+    const loaded = assetsLoaded && storeCreated && storeRehydrated;
+
+    if (!loaded) {
       return <SplashLoading />;
     }
 

@@ -40,6 +40,15 @@ export default class Hamburger extends Component<PropsType, StateType> {
   cName: string = "hamburger";
 
   /**
+   * styles def for the component
+   * @type {Object}
+   */
+  styles: ComponentStylesType = {
+    containerIn: null,
+    container: null
+  };
+
+  /**
    * define the list of allowed custom props and set default
    * @type {object}
    */
@@ -54,14 +63,9 @@ export default class Hamburger extends Component<PropsType, StateType> {
     super((props: PropsType));
 
     this._root = null;
-    this.styles = {
-      containerIn: null,
-      container: null
-    };
-
-    this.state = {
-      active: false
-    };
+    this.state = { active: false };
+    // get composed styles from received props
+    this.styles = getStyles(this.props, this.cName);
 
     this.setHamburgerRef = (element: RootType): void => {
       this._root = element;
@@ -82,15 +86,6 @@ export default class Hamburger extends Component<PropsType, StateType> {
    * @type {React.Element}
    */
   setHamburgerRef: RootType => void;
-
-  /**
-   * get composed styles from received props
-   */
-  getStyles(): ComponentStylesType {
-    return this.styles.containerIn === null
-      ? getStyles(this.props, this.cName)
-      : this.styles;
-  }
 
   middleBar: AnimatedType;
 
@@ -149,9 +144,6 @@ export default class Hamburger extends Component<PropsType, StateType> {
    * render Hamburger component
    */
   render(): React$Element<typeof TouchableWithoutFeedback> {
-    // initialize and add styles definition
-    this.styles = this.getStyles();
-
     const {
       props: { active, onPress }
     } = this;
