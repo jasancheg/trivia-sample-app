@@ -13,10 +13,19 @@ import Text from "../Text";
 import type { StyleSheetType } from "../../flow";
 
 // flow types
-type DefaultPropsType = {
-  theme?: ?{},
-  navigation: {}
-};
+type RouteType = { routeName: string };
+type NavStateType = {|
+  +index: number,
+  +routes: Array<RouteType>
+|};
+type NavigationType = {|
+  +state: NavStateType,
+  +navigate: string => void
+|};
+type DefaultPropsType = {|
+  +navigation: $ReadOnly<NavigationType>,
+  theme?: ?{}
+|};
 type PropsType = {
   ...DefaultPropsType
 };
@@ -48,20 +57,31 @@ export default class FooterNav extends Component<PropsType, StateType> {
   };
 
   /**
+   * routes list
+   * @type {Array}
+   */
+  routes: Array<string> = [];
+
+  /**
    * define the list of allowed custom props and set default
    * @type {object}
    */
   static defaultProps: DefaultPropsType = {
     theme: null,
-    navigation: { navigate: null }
+    navigation: {
+      state: {
+        index: 0,
+        routes: []
+      },
+      navigate(): void {}
+    }
   };
 
   constructor(props: PropsType): void {
     super((props: PropsType));
-
     this._root = null;
     this.styles = getStyles(this.props, this.cName);
-
+    this.routes = this.getRoutes();
     this.setFooterNavRef = (element: RootType): void => {
       this._root = element;
     };
@@ -79,10 +99,29 @@ export default class FooterNav extends Component<PropsType, StateType> {
    * @returns {number} text styles
    */
   getTextStyles(route: string): ?number {
-    const activeTab = "play";
+    const activeTab = this.getActiveTab();
     const { text, textActive } = this.styles;
 
     return activeTab === route ? textActive : text;
+  }
+
+  /**
+   * getActiveTab
+   * @param {string} route active route name
+   * @returns {number} text styles
+   */
+  getActiveTab(): string {
+    const { navigation } = this.props;
+    return this.routes.length ? this.routes[navigation.state.index] : "";
+  }
+
+  /**
+   * getActiveTab
+   * @returns {array} routes list
+   */
+  getRoutes(): Array<string> {
+    const { navigation } = this.props;
+    return navigation.state.routes.map((r: RouteType): string => r.routeName);
   }
 
   /**
@@ -91,8 +130,6 @@ export default class FooterNav extends Component<PropsType, StateType> {
    */
   goTo(route: string): void {
     const { navigation } = this.props;
-    console.log(route, this.props)
-    // $FlowFixMe
     navigation.navigate(route);
   }
 
@@ -107,49 +144,29 @@ export default class FooterNav extends Component<PropsType, StateType> {
    */
   render(): React$Element<typeof View> {
     const ios = Platform.OS === "ios";
-    const PROFILE = "profile";
-    const SCORE = "score";
-    const PLAY = "play";
-    // const { activeTab } = this.props;
-    const activeTab = PLAY;
-
+    const icons = [
+      ios ? "videogame-asset" : "gamepad-variant",
+      ios ? "poll" : "clipboard-pulse-outline",
+      ios ? "account-circle" : "account-circle"
+    ];
+    const activeTab = this.getActiveTab();
     const { container, item } = this.styles;
+    const o = { activeOpacity: 0.8 };
 
     return (
       <View ref={this.setFooterNavRef} style={container}>
-        <View style={item}>
-          <TouchableOpacity onPress={(): void => this.goTo(PLAY)}>
-            <TabBarIcon
-              focused={activeTab === PLAY}
-              name={ios ? "videogame-asset" : "gamepad-variant"}
-            />
-            <Text capitalize style={this.getTextStyles(PLAY)}>
-              {PLAY}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={item}>
-          <TouchableOpacity onPress={(): void => this.goTo(SCORE)}>
-            <TabBarIcon
-              focused={activeTab === SCORE}
-              name={ios ? "poll" : "clipboard-pulse-outline"}
-            />
-            <Text capitalize style={this.getTextStyles(SCORE)}>
-              {SCORE}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={item}>
-          <TouchableOpacity onPress={(): void => this.goTo(PROFILE)}>
-            <TabBarIcon
-              focused={activeTab === PROFILE}
-              name={ios ? "account-circle" : "account-circle"}
-            />
-            <Text capitalize style={this.getTextStyles(PROFILE)}>
-              {PROFILE}
-            </Text>
-          </TouchableOpacity>
-        </View>
+        {this.routes.map(
+          (r: string, i: number): React$Element<typeof View> => (
+            <View key={r} style={item}>
+              <TouchableOpacity {...o} onPress={(): void => this.goTo(r)}>
+                <TabBarIcon focused={activeTab === r} name={icons[i]} />
+                <Text capitalize style={this.getTextStyles(r)}>
+                  {r}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )
+        )}
       </View>
     );
   }

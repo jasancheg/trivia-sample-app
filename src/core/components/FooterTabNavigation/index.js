@@ -5,14 +5,13 @@
  */
 
 import React from "react";
-import { createBottomTabNavigator, NavigationEvents } from "react-navigation";
+// import { createBottomTabNavigator, NavigationEvents } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation";
 import { View } from "react-native";
 import { Svg } from "expo";
 
-import Notifications from "../../../screens/Notifications";
 import Profile from "../../../screens/Profile";
 import Score from "../../../screens/Score";
-import About from "../../../screens/About";
 import Play from "../../../screens/Play";
 import { theme } from "../../constants";
 import { getStyles } from "../../utils";
@@ -25,10 +24,10 @@ type ScreenObjType = {
   navigation: {}
 };
 
-type PayloadType = {
-  type: string,
-  state: {}
-};
+// type PayloadType = {
+//   type: string,
+//   state: {}
+// };
 
 // get composed styles from received props
 const styles = getStyles({}, "footerTabNavigation");
@@ -38,13 +37,6 @@ const PlayScreen = ({
   navigation
 }: ScreenObjType): React$Element<typeof Play> => (
   <Play navigation={navigation} />
-);
-
-const AboutScreen = ({
-  screenProps,
-  navigation
-}: ScreenObjType): React$Element<typeof About> => (
-  <About navigation={navigation} />
 );
 
 const ScoreScreen = ({
@@ -61,23 +53,17 @@ const ProfileScreen = ({
   <Profile navigation={navigation} />
 );
 
-const NotificationsScreen = ({
-  screenProps,
-  navigation
-}: ScreenObjType): React$Element<typeof Notifications> => (
-  <Notifications navigation={navigation} />
-);
+const tabBarComponent = (props: {}): React$Element<typeof View> => {
+  // const navEvent = (payload: PayloadType): void => {
+  //   console.log(payload.type, payload.state, Object.keys(payload));
+  // };
+  // <NavigationEvents onWillFocus={navEvent} onDidFocus={navEvent} />
 
-const tabBarComponent = (props: {}): React$Element<*> => {
-  const navEvent = (payload: PayloadType): void => {
-    console.log(payload.type, Object.keys(payload));
-  };
   const { orange, lavender } = theme.colors;
   const { width } = theme.layout;
 
   return (
     <View style={styles.container}>
-      <NavigationEvents onWillFocus={navEvent} onDidFocus={navEvent} />
       <View style={styles.bg}>
         <Svg height={footerNavHeight} width={width}>
           <Svg.Defs>
@@ -108,9 +94,7 @@ const FooterTabNavigation = createBottomTabNavigator(
   {
     play: { screen: PlayScreen },
     score: { screen: ScoreScreen },
-    profile: { screen: ProfileScreen },
-    about: { screen: AboutScreen },
-    notifications: { screen: NotificationsScreen }
+    profile: { screen: ProfileScreen }
   },
   {
     tabBarComponent,

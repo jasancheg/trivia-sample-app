@@ -45,7 +45,7 @@ export type ActionType =
   | { type: "SWITCH_DAY", day: 1 | 2 }
   | {
       type: "SWITCH_TAB",
-      tab: "schedule" | "my-schedule" | "map" | "notifications" | "info"
+      tab: "play" | "score" | "profile"
     }
   | { type: "TURNED_ON_PUSH_NOTIFICATIONS" }
   | { type: "REGISTERED_PUSH_NOTIFICATIONS" }
