@@ -4,7 +4,7 @@
  * @flow
  */
 
-// import Trivia from "trivia";
+// import Trivia from "@trivia/utils";
 // import { InteractionManager } from "react-native";
 
 import type { ActionType } from "./type";
@@ -19,7 +19,8 @@ async function loadConfig(): Promise<ActionType> {
 
   return {
     type: "LOADED_CONFIG",
-    config: {}
+    config: {},
+    loading: false
   };
 }
 

@@ -1,4 +1,10 @@
 /**
  * English definitions
  */
-export default {};
+export default {
+  // Errors
+  // Sidebar
+  // Play
+  // Score
+  // Profile
+};

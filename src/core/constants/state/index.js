@@ -5,22 +5,20 @@
  */
 
 import {
-  orderInitialState,
+  triviasInitialState,
   userInitialState,
-  pageInitialState,
-  appInitialState,
-  navInitialState
+  navInitialState,
+  appInitialState
 } from "./state";
 
 import { getStateKeys, initialState } from "./model";
 import types from "./types";
 
 export default {
-  orderInitialState,
+  triviasInitialState,
   userInitialState,
-  pageInitialState,
-  appInitialState,
   navInitialState,
+  appInitialState,
   getStateKeys,
   initialState,
   types

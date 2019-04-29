@@ -9,10 +9,9 @@ import React from "react";
 import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 
 import { FooterTabNavigation, Router } from "./components";
-import Notifications from "../screens/Notifications";
 import Profile from "../screens/Profile";
 import Score from "../screens/Score";
-import About from "../screens/About";
+// import About from "../screens/About";
 import Play from "../screens/Play";
 
 import type { NaviType } from "./components/Router";
@@ -35,14 +34,12 @@ const Drawer = createDrawerNavigator(
       screen: Score
     },
     profile: {
+      // $FlowFixMe , temp
       screen: Profile
-    },
-    notifications: {
-      screen: Notifications
-    },
-    about: {
-      screen: About
     }
+    // about: {
+    //   screen: About
+    // }
   },
   {
     initialRouteName: "footerTabNavigation",

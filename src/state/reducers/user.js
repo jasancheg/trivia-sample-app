@@ -18,7 +18,7 @@ export default (
 ): StateType => {
   switch (action.type) {
     case types.USER_UPDATED:
-      return { ...state, user: { name: "user name" } };
+      return { ...state, user: { name: "username" } };
     default:
       return state;
   }

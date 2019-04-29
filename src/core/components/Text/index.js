@@ -49,7 +49,7 @@ type PropsType = {
 type StateType = {};
 type ComponentStylesType = { text: ?number } | StyleSheetType;
 type RootType = ?React$Element<NativeText>;
-type TextType = ?(React$Element<string> | string);
+type TextType = ?(string | React$Element<string>);
 
 /**
  * Text component
@@ -173,9 +173,11 @@ export default class Text extends Component<PropsType, StateType> {
               text = _isString(text) ? _capitalize(text) : text;
               break;
             case "uppercase":
+              // $FlowFixMe, temp
               text = _isString(text) ? _toUpper(text) : text;
               break;
             case "lowercase":
+              // $FlowFixMe, temp
               text = _isString(text) ? _toLower(text) : text;
               break;
             default:
@@ -187,6 +189,7 @@ export default class Text extends Component<PropsType, StateType> {
           newProp = defineProp(key, prop);
           newProps = {
             ...newProps,
+            // $FlowFixMe, temp
             ...newProp
           };
         }
@@ -210,7 +213,7 @@ export default class Text extends Component<PropsType, StateType> {
       separator: "...",
       length
     };
-
+    // $FlowFixMe, temp
     return _isString(text) && _isNumber(length) ? _truncate(text, conf) : text;
   }
 
@@ -234,6 +237,7 @@ export default class Text extends Component<PropsType, StateType> {
     const { text, newProps } = this.denormalize();
 
     return (
+      // $FlowFixMe, temp
       <NativeText ref={this.setTextRef} {...newProps}>
         {text}
       </NativeText>

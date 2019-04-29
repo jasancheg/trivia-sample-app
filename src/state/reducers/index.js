@@ -6,15 +6,13 @@
 
 import { combineReducers } from "redux";
 
-import orderReducer from "./order";
-import pageReducer from "./page";
+import triviasReducer from "./trivias";
 import userReducer from "./user";
-import navReducer from "./nav";
 import appReducer from "./app";
+import navReducer from "./nav";
 
 export default combineReducers({
-  order: orderReducer,
-  page: pageReducer,
+  trivias: triviasReducer,
   user: userReducer,
   nav: navReducer,
   app: appReducer

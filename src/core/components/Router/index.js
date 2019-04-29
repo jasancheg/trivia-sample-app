@@ -73,10 +73,10 @@ export const HeaderRight = (
   <View style={{ marginRight: 10 }}>
     <TouchableOpacity
       onPress={(): void => {
-        navigation.navigate("play");
+        alert("music is temporaly disabled");
       }}
     >
-      <Icon name="bell" size={28} color="white" />
+      <Icon name="music-note-off" size={28} color="white" />
     </TouchableOpacity>
   </View>
 );

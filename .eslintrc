@@ -308,6 +308,7 @@
 
     "jsx-a11y/href-no-hash": 0,
     "linebreak-style": 0,
+    "operator-linebreak": "before",
     "no-global-assign": 0,
     "no-tabs": 0,
     "no-unsafe-negation": 0,

@@ -7,20 +7,20 @@
 import type { ActionType } from "../actions/type";
 import { state as stateConfig } from "../../core/constants";
 
-const { types, orderInitialState } = stateConfig;
+const { types, triviasInitialState } = stateConfig;
 
 type StateType = {
-  +orders: Array<{}>
+  +trivias: Array<{}>
 };
 
 // reducer
 export default (
-  state: StateType = orderInitialState,
+  state: StateType = triviasInitialState,
   action: ActionType
 ): StateType => {
   switch (action.type) {
-    case types.ORDERS_FETCHED:
-      return { ...state, orders: [] };
+    case types.TRIVIAS_FETCHED:
+      return { ...state, trivias: [] };
     default:
       return state;
   }

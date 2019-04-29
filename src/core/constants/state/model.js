@@ -5,28 +5,24 @@
  */
 
 import {
-  orderInitialState,
+  triviasInitialState,
   userInitialState,
-  pageInitialState,
-  appInitialState,
-  navInitialState
+  navInitialState,
+  appInitialState
 } from "./state";
 
 export const initialState = {
-  order: {
-    ...orderInitialState
+  trivias: {
+    ...triviasInitialState
   },
   user: {
     ...userInitialState
   },
-  page: {
-    ...pageInitialState
+  nav: {
+    ...navInitialState
   },
   app: {
     ...appInitialState
-  },
-  nav: {
-    ...navInitialState
   }
 };
 

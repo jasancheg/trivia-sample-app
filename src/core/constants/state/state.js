@@ -4,22 +4,20 @@
  * @flow
  */
 
-export const orderInitialState = {
-  orders: []
+export const triviasInitialState = {
+  trivias: []
 };
 
 export const userInitialState = {
   username: ""
 };
 
-export const pageInitialState = {
-  page: null
-};
-
 export const appInitialState = {
-  loading: false
+  loading: false,
+  config: null
 };
 
 export const navInitialState = {
-  nav: null
+  openedSideNav: false,
+  page: "play"
 };

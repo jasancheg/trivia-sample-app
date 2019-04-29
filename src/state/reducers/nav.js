@@ -5,12 +5,15 @@
  */
 
 import { state as stateConfig } from "../../core/constants";
-
 import type { ActionType } from "../actions/type";
 
-const { types, navInitialState } = stateConfig;
+export type TabType = "play" | "score" | "profile" | "about" | "notifications";
 
-type StateType = {};
+type StateType = {
+  page: TabType
+};
+
+const { types, navInitialState } = stateConfig;
 
 // reducer
 export default (
@@ -18,8 +21,15 @@ export default (
   action: ActionType
 ): StateType => {
   switch (action.type) {
-    case types.NAV_UPDATED:
-      return { ...state, nav: { tab: "nav name" } };
+    case types.OPENED_SIDENAV:
+      return { ...state, openedSideNav: action.opened };
+
+    case types.CHANGE_PAGE:
+      return { ...state, page: action.page };
+
+    case types.LOGGED_OUT:
+      return navInitialState;
+
     default:
       return state;
   }

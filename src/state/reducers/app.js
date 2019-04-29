@@ -22,6 +22,10 @@ export default (
   switch (action.type) {
     case types.CONFIG_REQUEST:
       return { ...state, loading: true };
+
+    case types.LOADED_CONFIG:
+      return { ...state, loading: false, config: action.config };
+
     default:
       return state;
   }
