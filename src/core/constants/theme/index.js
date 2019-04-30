@@ -17,6 +17,7 @@ import tabBarIcon from "./tabbaricon";
 import footerNav from "./footernav";
 import hamburger from "./hamburger";
 import statusbar from "./statusbar";
+import cardlevel from "./cardlevel";
 import button from "./button";
 import title from "./title";
 import text from "./text";
@@ -34,6 +35,7 @@ export default {
   footerNav,
   hamburger,
   statusbar,
+  cardlevel,
   button,
   title,
   text

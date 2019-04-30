@@ -97,6 +97,9 @@ export const raised = Platform.select({
 
 //
 export const titleHeight = 40;
+export const cardHeader = 40;
+export const cardFooter = 40;
+export const cardBody = 120;
 
 // footerNav and tabIcon components
 export const footerNavSeparatorHeight = 6;
