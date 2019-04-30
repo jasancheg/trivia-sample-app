@@ -5,7 +5,7 @@
  */
 
 export const triviasInitialState = {
-  trivias: []
+  list: []
 };
 
 export const userInitialState = {

@@ -1,5 +1,5 @@
 /**
- * ./src/reducers/order.js
+ * ./src/reducers/trivias.js
  *
  * @flow
  */
@@ -10,7 +10,7 @@ import { state as stateConfig } from "../../core/constants";
 const { types, triviasInitialState } = stateConfig;
 
 type StateType = {
-  +trivias: Array<{}>
+  +list: Array<{}>
 };
 
 // reducer
@@ -20,7 +20,8 @@ export default (
 ): StateType => {
   switch (action.type) {
     case types.TRIVIAS_FETCHED:
-      return { ...state, trivias: [] };
+      console.log('asdfasdf', action);
+      return { ...state, list: [] };
     default:
       return state;
   }

@@ -18,6 +18,7 @@ import footerNav from "./footernav";
 import hamburger from "./hamburger";
 import statusbar from "./statusbar";
 import button from "./button";
+import title from "./title";
 import text from "./text";
 
 export default {
@@ -34,5 +35,6 @@ export default {
   hamburger,
   statusbar,
   button,
+  title,
   text
 };

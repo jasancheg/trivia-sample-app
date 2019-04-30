@@ -7,8 +7,8 @@
 type ObjectType = {};
 
 export type ActionType =
-  | { type: "TRIVIAS_REQUEST", config: ObjectType }
-  | { type: "TRIVIAS_FETCHED", trivias: Array<{}> }
+  | { type: "TRIVIAS_FETCH", list: Array<{}> }
+  | { type: "TRIVIAS_FETCHED", list: Array<{}> }
   | { type: "CONFIG_REQUEST", loading: boolean }
   | { type: "LOADED_CONFIG", config: ObjectType, loading: boolean }
   | {

@@ -5,7 +5,11 @@
  */
 
 import * as configActions from "./config";
+import {
+  fetchTrivias,
+} from "./trivias"
 
 module.exports = {
+  fetchTrivias, 
   ...configActions
 };

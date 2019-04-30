@@ -95,6 +95,9 @@ export const raised = Platform.select({
   }
 });
 
+//
+export const titleHeight = 40;
+
 // footerNav and tabIcon components
 export const footerNavSeparatorHeight = 6;
 export const footerNavHeight = 60;

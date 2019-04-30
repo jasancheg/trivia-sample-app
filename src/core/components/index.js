@@ -12,6 +12,7 @@ import Hamburger from "./Hamburger";
 import Statusbar from "./Statusbar";
 import Button from "./Button";
 import Router from "./Router";
+import Title from "./Title";
 // import Root from "./Root";
 import Deck from "./Deck";
 import Text from "./Text";
@@ -24,6 +25,7 @@ export {
   Statusbar,
   Button,
   Router,
+  Title,
   Deck,
   Text
 };
