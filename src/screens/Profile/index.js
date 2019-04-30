@@ -3,6 +3,7 @@
 
 import React, { Component } from "react";
 import {
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Platform,
@@ -12,6 +13,8 @@ import {
   View
 } from "react-native";
 import { DangerZone } from "expo";
+
+import { Title } from "../../core/components";
 
 const { Localization } = DangerZone;
 
@@ -76,54 +79,58 @@ class LocalizationScreen extends Component<PropsType, StateType> {
 
   render() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <Button
-            title={"Show preferred locales"}
-            onPress={this.queryPreferredLocales}
-          >
-            <Text style={styles.isoCurrencyCodes}>Query Platform values</Text>
-          </Button>
-          <View style={styles.centered}>
-            <Text style={styles.plainBanner}>Current Locale</Text>
-            <Text>{JSON.stringify(this.state.currentLocale, null, 2)}</Text>
-          </View>
-          <View style={styles.centered}>
-            <Text style={styles.plainBanner}>Locales in Preference Order</Text>
-            <Text>{JSON.stringify(this.state.preferredLocales, null, 2)}</Text>
-          </View>
-          <Picker
-            style={styles.picker}
-            selectedValue={this.state.locale}
-            onValueChange={this.changeLocale}
-          >
-            <Picker.Item label={"🇺🇸 English"} value={"en_US"} />
-            <Picker.Item
-              label={"🇷🇺 Russian"}
-              value={
-                (Platform.OS === "ios" && "ru_US") ||
-                (Platform.OS === "android" && "ru_RU")
-              }
-            />
-          </Picker>
-          <Text style={styles.plainBanner}>Localization table</Text>
-          <Text>{JSON.stringify(localization, null, 2)}</Text>
-          <View style={styles.languageBox}>
-            <View style={styles.row}>
-              <Text>Exists in Both: </Text>
-              <Text>
-                {this.state.currentLocale ? this.localeStore.phrase : ""}
-              </Text>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView>
+          <Title>Guest profile</Title>
+          <Text>This module is under construction, it is expected to manage the copy of the application in a dynamic way usign the locale and downloading the copy from API. It will be stored and persisted in the application by usign a version manager of the state.</Text>
+          <View style={styles.container}>
+            <Button
+              title={"Show preferred locales"}
+              onPress={this.queryPreferredLocales}
+            >
+              <Text style={styles.isoCurrencyCodes}>Query Platform values</Text>
+            </Button>
+            <View style={styles.centered}>
+              <Text style={styles.plainBanner}>Current Locale</Text>
+              <Text>{JSON.stringify(this.state.currentLocale, null, 2)}</Text>
             </View>
-            <View style={styles.row}>
-              <Text>Default Case Only: </Text>
-              <Text>
-                {this.state.currentLocale ? this.localeStore.default : ""}
-              </Text>
+            <View style={styles.centered}>
+              <Text style={styles.plainBanner}>Locales in Preference Order</Text>
+              <Text>{JSON.stringify(this.state.preferredLocales, null, 2)}</Text>
+            </View>
+            <Picker
+              style={styles.picker}
+              selectedValue={this.state.locale}
+              onValueChange={this.changeLocale}
+            >
+              <Picker.Item label={"🇺🇸 English"} value={"en_US"} />
+              <Picker.Item
+                label={"🇷🇺 Russian"}
+                value={
+                  (Platform.OS === "ios" && "ru_US") ||
+                  (Platform.OS === "android" && "ru_RU")
+                }
+              />
+            </Picker>
+            <Text style={styles.plainBanner}>Localization table</Text>
+            <Text>{JSON.stringify(localization, null, 2)}</Text>
+            <View style={styles.languageBox}>
+              <View style={styles.row}>
+                <Text>Exists in Both: </Text>
+                <Text>
+                  {this.state.currentLocale ? this.localeStore.phrase : ""}
+                </Text>
+              </View>
+              <View style={styles.row}>
+                <Text>Default Case Only: </Text>
+                <Text>
+                  {this.state.currentLocale ? this.localeStore.default : ""}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }

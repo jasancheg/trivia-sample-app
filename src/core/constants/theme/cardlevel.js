@@ -31,9 +31,10 @@ const styles = {
       flex: 1
     },
     body: {
-      backgroundColor: "#959595",
-      flexDirection: "column",
+      backgroundColor: "#959595",    
       justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "row",
       position: "relative",
       borderColor: orange,
       paddingLeft: 10,

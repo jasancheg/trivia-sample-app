@@ -1,18 +1,31 @@
+/**
+ * ./src/screens/Play/index.js
+ *
+ * @flow
+ */
+
 import React, { Component } from "react";
 import { View, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 
-import { Title, Text, CardLevel, Deck } from "../../core/components";
+import { Title, Text, CardLevel } from "../../core/components";
 import actions from "../../state/actions";
 import { assets } from "../../core/utils";
 
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
-class Play extends Component {
-  static navigationOptions = {
-    title: "Play"
-  };
+// flow types
+type DefaultPropsType = {};
+type PropsType = {
+  ...DefaultPropsType
+};
+type StateType = {};
 
+/**
+ * Play component screen
+ */
+class Play extends Component<PropsType, StateType> {
+  
   onButtonPress = (difficulty: string) => {
     console.log("ha entrado", this.props);
     const options = { 
@@ -55,25 +68,12 @@ class Play extends Component {
       </SafeAreaView>
     );
   }
-
-
-  // <Deck
-  //   data={DATA}
-  //   renderCard={this.renderCard}
-  //   renderNoMoreCards={this.renderNoMoreCards}
-  // />
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#e7e7e7"
-  },
-  title: {
-    backgroundColor: "#3C7F75",
-    borderRadius: 6,
-    padding: 10,
-    margin: 10
   }
 });
 
