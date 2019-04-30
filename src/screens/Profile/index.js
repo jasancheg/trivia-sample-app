@@ -82,8 +82,9 @@ class LocalizationScreen extends Component<PropsType, StateType> {
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
           <Title>Guest profile</Title>
-          <Text>This module is under construction, it is expected to manage the copy of the application in a dynamic way usign the locale and downloading the copy from API. It will be stored and persisted in the application by usign a version manager of the state.</Text>
           <View style={styles.container}>
+            <Text style={{padding: 10}}>This module is under construction, it is expected to manage the copy of the application in a dynamic way usign the locale and downloading the copy from API. It will be stored and persisted in the application by usign a version manager of the state. Login and signup will be created here. </Text>
+          
             <Button
               title={"Show preferred locales"}
               onPress={this.queryPreferredLocales}

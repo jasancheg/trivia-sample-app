@@ -26,15 +26,15 @@ type StateType = {};
  */
 class Play extends Component<PropsType, StateType> {
   
-  onButtonPress = (difficulty: string) => {
+  onPress = (difficulty: string, amount: number) => {
     console.log("ha entrado", this.props);
     const options = { 
       difficulty,
-      amount: 10
+      amount
     };
   
     this.props.fetchTrivias(options, () => {
-      console.log('yeah que termino', this.props);
+      console.log('ha terminado', this.props);
       //this.props.navigation.navigate('deck');
     });
   }
@@ -45,22 +45,22 @@ class Play extends Component<PropsType, StateType> {
         <ScrollView>
           <View style={styles.container}>
             <Title>Are you ready for the challenge?</Title>
-            <CardLevel difficulty={"hard"}>
+            <CardLevel difficulty={"hard"} onPress={this.onPress} >
               Level: Hard I - (10 questions)
             </CardLevel>
-            <CardLevel difficulty={"hard"} amound={20}>
+            <CardLevel difficulty={"hard"} amound={20} onPress={this.onPress}>
               Level: Hard II   -   (20 questions)
             </CardLevel>
-            <CardLevel difficulty={"medium"}>
+            <CardLevel difficulty={"medium"} onPress={this.onPress}>
               Level: Medium I   -   (10 questions)
             </CardLevel>
-            <CardLevel difficulty={"medium"} amound={20}>
+            <CardLevel difficulty={"medium"} amound={20} onPress={this.onPress}>
               Level: Medium II   -   (20 questions)
             </CardLevel>
-            <CardLevel difficulty={"easy"}>
+            <CardLevel difficulty={"easy"} onPress={this.onPress}>
               Level: easy I   -   (10 questions)
             </CardLevel>
-            <CardLevel difficulty={"easy"} amound={20}>
+            <CardLevel difficulty={"easy"} amound={20} onPress={this.onPress}>
               Level: easy II   -   (20 questions)
             </CardLevel>
           </View>
