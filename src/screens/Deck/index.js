@@ -22,27 +22,26 @@ type StateType = {};
  */
 class Deck extends Component<PropsType, StateType> {
   renderCard(trivia) {
-    const initialRegion = {
-      longitude: trivia.longitude,
-      latitude: trivia.latitude,
-      latitudeDelta: 0.045,
-      longitudeDelta: 0.02
-    };
-
+    console.log("trivia", trivia);
     return (
-      <View title={trivia.triviatitle}>
-        <View style={styles.detailWrapper}>
-          <Text>{trivia.company}</Text>
-          <Text>{trivia.formattedRelativeTime}</Text>
+      <View style={{flex: 1}}>
+        <View>
+          <Text bold capitalize>{trivia.category}</Text>
         </View>
-        <Text>
-          algo aquí
-        </Text>
+        <View>
+          <Text>{trivia.difficulty}</Text>
+        </View>
+        <View>
+          <Text>{trivia.question}</Text>
+        </View>
+        <View>
+          <Text>{trivia.correct_answer}</Text>
+        </View>
       </View>
     );
   }
 
-  renderNoMoreCards = () => {
+  renderMarker = () => {
     return (
       <View title="Your puntuation">
         <Button
@@ -57,7 +56,6 @@ class Deck extends Component<PropsType, StateType> {
   }
 
   render() {
-    console.log("this.props", this.props);
     const { test, questions } = this.props;
     const difficulty = `Level: ${test.difficulty}`;
     const level = `${test.level === 2 ? "II" : "I"}`;
@@ -69,14 +67,15 @@ class Deck extends Component<PropsType, StateType> {
           <View style={styles.container}>
             <Title>{headerText}</Title>
             <Text style={styles.text}>Swipe the card to answer. Left is 'no' and right is 'yes'</Text>
-            <Text style={styles.text}>{JSON.stringify(questions)}</Text>
+            
           </View>
-          <View style={{ marginTop: 10, background: 'green', padding: 20 }}>
+          <View style={{ flex: 1, marginTop: 10, background: 'green', padding: 20 }}>
             <Swipe
               data={questions}
               renderCard={this.renderCard}
-              renderNoMoreCards={this.renderNoMoreCards}
+              renderMarker={this.renderMarker}
               onSwipeRight={trivia => this.props.chooseYes(trivia)}
+              onSwipeLeft={trivia => this.props.chooseNo(trivia)}
               keyProp="triviakey"
             />
           </View>
@@ -86,6 +85,7 @@ class Deck extends Component<PropsType, StateType> {
   }
 }
 
+// <Text style={styles.text}>{JSON.stringify(questions)}</Text>
 const styles = StyleSheet.create({
   container: {
     flex: 1,

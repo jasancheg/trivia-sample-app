@@ -83,7 +83,7 @@ class LocalizationScreen extends Component<PropsType, StateType> {
         <ScrollView>
           <Title>Guest profile</Title>
           <View style={styles.container}>
-            <Text style={{padding: 10}}>This module is under construction, it is expected to manage the copy of the application in a dynamic way usign the locale and downloading the copy from API. It will be stored and persisted in the application by usign a version manager of the state. Login and signup will be created here. </Text>
+            <Text style={{padding: 10}}>This module is under construction, it is expected to manage the copy of the application in a dynamic way usign the locale and downloading the copy from API. It will be stored and persisted in the application by usign a version manager of the state. Login and signup will be created here. Authentication is not required, a user can play as a guest, a logged in user will have persistence of their data in the cloud and will be able to compare their marker with that of other users: P. </Text>
           
             <Button
               title={"Show preferred locales"}
