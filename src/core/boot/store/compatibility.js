@@ -42,7 +42,7 @@ async function resetCompatibility(): Promise<boolean> {
     );
 
     if (targets.length) {
-      console.log("targets", targets);
+      // console.log("targets", targets);
       await secureStorage.removeAll();
     }
 

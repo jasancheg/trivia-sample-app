@@ -7,8 +7,41 @@
 type ObjectType = {};
 
 export type ActionType =
-  | { type: "TRIVIAS_FETCH", list: Array<{}> }
-  | { type: "TRIVIAS_FETCHED", list: Array<{}> }
+  | { 
+    type: "SET_TESTS", 
+    questions: Array<{}>,
+    loading: boolean,
+    tests: Array<{}>,
+    scores: {
+      easy: Array<{}>,
+      medium: Array<{}>,
+      hard: Array<{}>
+    },
+    active: boolean,
+    index: number
+  }
+  | { 
+      type: "TRIVIA_FETCH", 
+      questions: Array<{}>,
+      loading: boolean,
+      tests: Array<{}>,
+      scores: {
+        easy: Array<{}>,
+        medium: Array<{}>,
+        hard: Array<{}>
+      },
+      active: boolean,
+      index: number
+    }
+  | { 
+      type: "TRIVIA_FETCHED",
+      payload: {},
+      questions: Array<{}>,
+      tests: Array<{}>,
+      loading: boolean,
+      active: boolean,
+      index: number  
+    }
   | { type: "CONFIG_REQUEST", loading: boolean }
   | { type: "LOADED_CONFIG", config: ObjectType, loading: boolean }
   | {

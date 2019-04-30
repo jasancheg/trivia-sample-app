@@ -23,7 +23,9 @@ type DefaultPropsType = {
   children: string,
   lastScore: string,
   playedIn: string,
-  onPress: () => void
+  onPress: () => void,
+  difficulty: string,
+  amound: number
 };
 type PropsType = {
   ...DefaultPropsType
@@ -71,7 +73,9 @@ class CardLevel extends Component<PropsType, StateType> {
     children: "",
     lastScore: "",
     playedIn: "",
-    onPress: p => p
+    onPress: p => p,
+    difficulty: "hard",
+    amound: 10
   };
 
   constructor(props: PropsType): void {
@@ -102,6 +106,8 @@ class CardLevel extends Component<PropsType, StateType> {
    */
   render(): React$Element<typeof View> {
     const { 
+      difficulty = "hard",
+      amound = 10,
       loading,
       children, 
       lastScore = "", 
@@ -112,7 +118,7 @@ class CardLevel extends Component<PropsType, StateType> {
     const footerText = lastScore 
       ? `Last Score: ${lastScore} played in: ${playedIn}` 
       : "Play the first match";
-  
+    
     console.log("PROPS", this.props);
   
     return (
@@ -125,7 +131,7 @@ class CardLevel extends Component<PropsType, StateType> {
             {
               loading 
                 ? <ActivityIndicator size="large" color={lavender} />
-                : (<TouchableOpacity onPress={onPress}>
+                : (<TouchableOpacity onPress={() => onPress(difficulty, amound)}>
                     <Icon name="play-circle-outline" size={50} color="white" />
                   </TouchableOpacity>)
             }            

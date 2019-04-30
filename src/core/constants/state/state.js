@@ -4,8 +4,48 @@
  * @flow
  */
 
-export const triviasInitialState = {
-  list: []
+export const triviaInitialState = {
+  index: 0,
+  loading: false,
+  active: false,
+  scores: {
+    hard: [],
+    medium: [],
+    easy: []
+  },
+  questions: [],
+  tests: [
+    {
+      difficulty: "hard",
+      amound: 10,
+      level: 1
+    },
+    {
+      difficulty: "hard",
+      amound: 20,
+      level: 2
+    },
+    {
+      difficulty: "medium",
+      amound: 10,
+      level: 1
+    },
+    {
+      difficulty: "medium",
+      amound: 20,
+      level: 2
+    },
+    {
+      difficulty: "easy",
+      amound: 10,
+      level: 1
+    },
+    {
+      difficulty: "easy",
+      amound: 20,
+      level: 2
+    }
+  ]
 };
 
 export const userInitialState = {

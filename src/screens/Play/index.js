@@ -15,7 +15,9 @@ import { assets } from "../../core/utils";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 // flow types
-type DefaultPropsType = {};
+type DefaultPropsType = {
+
+};
 type PropsType = {
   ...DefaultPropsType
 };
@@ -25,44 +27,46 @@ type StateType = {};
  * Play component screen
  */
 class Play extends Component<PropsType, StateType> {
-  
+
+  /**
+   * styles def for the component
+   * @type {Object}
+   */
+
   onPress = (difficulty: string, amount: number) => {
-    console.log("ha entrado", this.props);
     const options = { 
       difficulty,
       amount
     };
+
+    console.log('onPress', this.props);
   
-    this.props.fetchTrivias(options, () => {
+    this.props.fetchTrivia(options, () => {
       console.log('ha terminado', this.props);
       //this.props.navigation.navigate('deck');
     });
   }
 
   render() {
+    const { tests } = this.props;
+    console.log("tests", tests, this.props);
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.container}>
             <Title>Are you ready for the challenge?</Title>
-            <CardLevel difficulty={"hard"} onPress={this.onPress} >
-              Level: Hard I - (10 questions)
-            </CardLevel>
-            <CardLevel difficulty={"hard"} amound={20} onPress={this.onPress}>
-              Level: Hard II   -   (20 questions)
-            </CardLevel>
-            <CardLevel difficulty={"medium"} onPress={this.onPress}>
-              Level: Medium I   -   (10 questions)
-            </CardLevel>
-            <CardLevel difficulty={"medium"} amound={20} onPress={this.onPress}>
-              Level: Medium II   -   (20 questions)
-            </CardLevel>
-            <CardLevel difficulty={"easy"} onPress={this.onPress}>
-              Level: easy I   -   (10 questions)
-            </CardLevel>
-            <CardLevel difficulty={"easy"} amound={20} onPress={this.onPress}>
-              Level: easy II   -   (20 questions)
-            </CardLevel>
+            {
+              tests.map((t, i) => {
+                return (
+                  <CardLevel 
+                    key={i} 
+                    {...t} 
+                    onPress={this.onPress}>
+                    { `Level: ${t.difficulty} ${t.level === 2 ? "II" : "I"} - (${t.amound} questions)` }
+                  </CardLevel>
+                )
+              })
+            }
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -78,10 +82,8 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("STATE", state);
-
   return {
-      statex: state
+    tests: state.trivia.tests
   };
 }
 

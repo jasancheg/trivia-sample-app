@@ -5,15 +5,15 @@
  */
 
 import {
-  triviasInitialState,
+  triviaInitialState,
   userInitialState,
   navInitialState,
   appInitialState
 } from "./state";
 
 export const initialState = {
-  trivias: {
-    ...triviasInitialState
+  trivia: {
+    ...triviaInitialState
   },
   user: {
     ...userInitialState

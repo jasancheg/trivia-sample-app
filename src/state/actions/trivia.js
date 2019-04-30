@@ -1,5 +1,5 @@
 /**
- * ./src/actions/trivias.js
+ * ./src/actions/trivia.js
  *
  * @flow
  */
@@ -22,16 +22,16 @@ const buildTriviaUrl = ({ difficulty, amount }) => {
   return `${TRIVI_URL}?amount=${amount}&difficulty=${difficulty}&type=boolean`;
 };
 
-export const fetchTrivias = (options: OptionsType = baseOpts, cb: CBType) => async (dispatch: DispatchType): Promise<mixed> => {
-  dispatch({ type: types.TRIVIAS_FETCH, payload: ["jojo"] });
+export const fetchTrivia = (options: OptionsType = baseOpts, cb: CBType) => async (dispatch: DispatchType): Promise<mixed> => {
+  dispatch({ type: types.TRIVIA_FETCH });
 
   try {
     const url = buildTriviaUrl(options);
     
     let { data } = await axios.get(url);
 
-    console.log(data);
-    dispatch({ type: types.TRIVIAS_FETCHED, payload: data });
+    console.log("data", data);
+    dispatch({ type: types.TRIVIA_FETCHED, payload: data });
     cb();
   } catch(e) {
     console.error(e);

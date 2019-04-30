@@ -5,7 +5,7 @@
  */
 
 import {
-  triviasInitialState,
+  triviaInitialState,
   userInitialState,
   navInitialState,
   appInitialState
@@ -15,7 +15,7 @@ import { getStateKeys, initialState } from "./model";
 import types from "./types";
 
 export default {
-  triviasInitialState,
+  triviaInitialState,
   userInitialState,
   navInitialState,
   appInitialState,

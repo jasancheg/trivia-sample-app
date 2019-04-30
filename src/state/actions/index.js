@@ -6,10 +6,10 @@
 
 import * as configActions from "./config";
 import {
-  fetchTrivias,
-} from "./trivias"
+  fetchTrivia,
+} from "./trivia"
 
 module.exports = {
-  fetchTrivias, 
+  fetchTrivia, 
   ...configActions
 };
