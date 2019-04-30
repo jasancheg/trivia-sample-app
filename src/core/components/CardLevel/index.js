@@ -18,6 +18,8 @@ import type { StyleSheetType } from "../../flow";
 
 // flow types
 type DefaultPropsType = {
+  index: number,
+  activeIndex: number,
   loading: boolean,
   theme?: ?{},
   children: string,
@@ -68,6 +70,8 @@ class CardLevel extends Component<PropsType, StateType> {
    * @type {object}
    */
   static defaultProps: DefaultPropsType = {
+    index: 0,
+    activeIndex: 0,
     loading: false,
     theme: null,
     children: "",
@@ -105,22 +109,22 @@ class CardLevel extends Component<PropsType, StateType> {
    * render SplashLoading component
    */
   render(): React$Element<typeof View> {
-    const { 
+    const {
+      index = 0, 
       difficulty = "hard",
       amound = 10,
       loading,
       children, 
       lastScore = "", 
       playedIn = "", 
+      activeIndex,
       onPress = () => console.log("missing onPress event")
     } = this.props;
   
     const footerText = lastScore 
       ? `Last Score: ${lastScore} played in: ${playedIn}` 
       : "Play the first match";
-    
-    console.log("PROPS", this.props);
-  
+
     return (
       <View style={this.styles.container}>
         <View style={this.styles.header}>
@@ -129,9 +133,9 @@ class CardLevel extends Component<PropsType, StateType> {
         <View style={this.styles.body}>
           <View style={{ marginRight: 10 }}>
             {
-              loading 
+              loading && index === activeIndex
                 ? <ActivityIndicator size="large" color={lavender} />
-                : (<TouchableOpacity onPress={() => onPress(difficulty, amound)}>
+                : (<TouchableOpacity onPress={() => onPress(difficulty, amound, index)}>
                     <Icon name="play-circle-outline" size={50} color="white" />
                   </TouchableOpacity>)
             }            
@@ -149,7 +153,8 @@ class CardLevel extends Component<PropsType, StateType> {
 
 function mapStateToProps(state) {
   return {
-    loading: state.app.loading
+    loading: state.trivia.loading,
+    activeIndex: state.trivia.index
   };
 }
 

@@ -15,7 +15,7 @@ export default {
   // trivia
   TRIVIA_FETCHED: "TRIVIA_FETCHED",
   TRIVIA_FETCH: "TRIVIA_FETCH",
-  SET_TESTS: "SET_TESTS",
+  RESET: "RESET",
 
   // user
   USER_UPDATED: "USER_UPDATED",

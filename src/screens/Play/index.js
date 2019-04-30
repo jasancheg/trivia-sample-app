@@ -16,7 +16,12 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 // flow types
 type DefaultPropsType = {
-
+  tests: Array<{
+    difficulty: string,
+    level: number,
+    amound: number,
+    index: number
+  }>
 };
 type PropsType = {
   ...DefaultPropsType
@@ -33,23 +38,22 @@ class Play extends Component<PropsType, StateType> {
    * @type {Object}
    */
 
-  onPress = (difficulty: string, amount: number) => {
+  onPress = (difficulty: string, amount: number, index: number) => {
     const options = { 
       difficulty,
-      amount
+      amount,
+      index
     };
-
-    console.log('onPress', this.props);
   
     this.props.fetchTrivia(options, () => {
-      console.log('ha terminado', this.props);
+      console.log('navigate to the test', this.props.navigation);
       //this.props.navigation.navigate('deck');
     });
   }
 
   render() {
     const { tests } = this.props;
-    console.log("tests", tests, this.props);
+
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
@@ -60,6 +64,7 @@ class Play extends Component<PropsType, StateType> {
                 return (
                   <CardLevel 
                     key={i} 
+                    index={i}
                     {...t} 
                     onPress={this.onPress}>
                     { `Level: ${t.difficulty} ${t.level === 2 ? "II" : "I"} - (${t.amound} questions)` }

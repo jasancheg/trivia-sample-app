@@ -19,15 +19,11 @@ export default (
   action: ActionType
 ): StateType => {
   switch (action.type) {
-    case types.SET_TESTS:
+    case types.RESET:
       return { ...triviaInitialState };
     case types.TRIVIA_FETCH:
-      console.log('TRIVIA_FETCH', action, state);
-      console.log('ST', state);
-      console.log('triviaInitialState', triviaInitialState);
-      return { ...state, questions: [], loading: true, active: false };
+      return { ...state, questions: [], loading: true, active: false, index: action.index };
     case types.TRIVIA_FETCHED:
-      console.log('TRIVIA_FETCHED', action);
       return { ...state, questions: action.payload.results, loading: false, active: true };
     default:
       return state;

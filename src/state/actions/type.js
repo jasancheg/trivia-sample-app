@@ -8,7 +8,7 @@ type ObjectType = {};
 
 export type ActionType =
   | { 
-    type: "SET_TESTS", 
+    type: "RESET", 
     questions: Array<{}>,
     loading: boolean,
     tests: Array<{}>,
