@@ -15,7 +15,7 @@ import Button from "./Button";
 import Router from "./Router";
 import Title from "./Title";
 // import Root from "./Root";
-import Deck from "./Deck";
+import Swipe from "./Swipe";
 import Text from "./Text";
 
 export {
@@ -28,6 +28,6 @@ export {
   Button,
   Router,
   Title,
-  Deck,
+  Swipe,
   Text
 };

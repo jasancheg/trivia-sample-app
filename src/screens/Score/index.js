@@ -44,8 +44,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("About", state);
-
   return {
       statey: state
   };

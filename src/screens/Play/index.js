@@ -46,8 +46,7 @@ class Play extends Component<PropsType, StateType> {
     };
   
     this.props.fetchTrivia(options, () => {
-      console.log('navigate to the test', this.props.navigation);
-      //this.props.navigation.navigate('deck');
+      this.props.navigation.navigate('deck');
     });
   }
 

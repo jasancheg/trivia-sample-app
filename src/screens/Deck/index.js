@@ -1,91 +1,106 @@
-import React, { Component } from 'react';
-import { View, Text, Platform } from 'react-native';
-import { connect } from 'react-redux';
-import { MapView } from 'expo';
-import { Card, Button, Icon } from 'react-native-elements';
-import Swipe from '../components/Swipe';
-import * as actions from '../actions';
+/**
+ * ./src/screens/Score/index.js
+ *
+ * @flow
+ */
 
-class DeckScreen extends Component {
-  static navigationOptions = {
-    title: 'Jobs',
-    tabBar: {
-      icon: ({ tintColor }) => {
-        return <Icon name="description" size={30} color={tintColor} />;
-      }
-    }
-  }
+import React, { Component } from "react";
+import { View, SafeAreaView, ScrollView, StyleSheet, Button } from "react-native";
+import { connect } from "react-redux";
+import { Title, Text, Swipe } from "../../core/components";
+import actions from "../../state/actions";
 
-  renderCard(job) {
+// flow types
+type DefaultPropsType = {};
+type PropsType = {
+  ...DefaultPropsType
+};
+type StateType = {};
+
+/**
+ * Play component screen
+ */
+class Deck extends Component<PropsType, StateType> {
+  renderCard(trivia) {
     const initialRegion = {
-      longitude: job.longitude,
-      latitude: job.latitude,
+      longitude: trivia.longitude,
+      latitude: trivia.latitude,
       latitudeDelta: 0.045,
       longitudeDelta: 0.02
     };
 
     return (
-      <Card title={job.jobtitle}>
-        <View style={{ height: 300 }}>
-          <MapView
-            scrollEnabled={false}
-            style={{ flex: 1 }}
-            cacheEnabled={Platform.OS === 'android' ? true : false}
-            initialRegion={initialRegion}
-          >
-          </MapView>
-        </View>
+      <View title={trivia.triviatitle}>
         <View style={styles.detailWrapper}>
-          <Text>{job.company}</Text>
-          <Text>{job.formattedRelativeTime}</Text>
+          <Text>{trivia.company}</Text>
+          <Text>{trivia.formattedRelativeTime}</Text>
         </View>
         <Text>
-          {job.snippet.replace(/<b>/g, '').replace(/<\/b/g, '')}
+          algo aquí
         </Text>
-      </Card>
+      </View>
     );
   }
 
   renderNoMoreCards = () => {
     return (
-      <Card title="No More Jobs">
+      <View title="Your puntuation">
         <Button
-          title="Back To Map"
+          title="Back to home"
           large
           icon={{ name: 'my-location' }}
           backgroundColor="#03A9F4"
-          onPress={() => this.props.navigation.navigate('map')}
-        />
-      </Card>
-    );
-  }
-
-  render() {
-    return (
-      <View style={{ marginTop: 10 }}>
-        <Swipe
-          data={this.props.jobs}
-          renderCard={this.renderCard}
-          renderNoMoreCards={this.renderNoMoreCards}
-          onSwipeRight={job => this.props.likeJob(job)}
-          keyProp="jobkey"
+          onPress={() => this.props.navigation.navigate("play")}
         />
       </View>
     );
   }
-}
 
-const styles = {
-  detailWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 10
+  render() {
+    console.log("this.props", this.props);
+    const { test, questions } = this.props;
+    const difficulty = `Level: ${test.difficulty}`;
+    const level = `${test.level === 2 ? "II" : "I"}`;
+    const questionsTxt = `(${test.amound} questions)`;
+    const headerText = `${difficulty} ${level}  -  ${questionsTxt}`;
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView>
+          <View style={styles.container}>
+            <Title>{headerText}</Title>
+            <Text style={styles.text}>Swipe the card to answer. Left is 'no' and right is 'yes'</Text>
+            <Text style={styles.text}>{JSON.stringify(questions)}</Text>
+          </View>
+          <View style={{ marginTop: 10, background: 'green', padding: 20 }}>
+            <Swipe
+              data={questions}
+              renderCard={this.renderCard}
+              renderNoMoreCards={this.renderNoMoreCards}
+              onSwipeRight={trivia => this.props.chooseYes(trivia)}
+              keyProp="triviakey"
+            />
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    );
   }
-};
-
-function mapStateToProps({ trivia }) {
-  console.log("trivia", trivia)
-  return { trivia };
 }
 
-export default connect(mapStateToProps, actions)(DeckScreen);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#e7e7e7"
+  },
+  text: {
+    padding: 10
+  }
+});
+
+function mapStateToProps(state) {
+  return {
+    test: state.trivia.tests[state.trivia.index],
+    questions: state.trivia.questions
+  };
+}
+
+export default connect(mapStateToProps, actions)(Deck);

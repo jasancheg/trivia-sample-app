@@ -12,6 +12,7 @@ import { Svg } from "expo";
 
 import Profile from "../../../screens/Profile";
 import Score from "../../../screens/Score";
+import Deck from "../../../screens/Deck";
 import Play from "../../../screens/Play";
 import { theme } from "../../constants";
 import { getStyles } from "../../utils";
@@ -51,6 +52,13 @@ const ProfileScreen = ({
   navigation
 }: ScreenObjType): React$Element<typeof Profile> => (
   <Profile navigation={navigation} />
+);
+
+const DeckScreen = ({
+  screenProps,
+  navigation
+}: ScreenObjType): React$Element<typeof Deck> => (
+  <Deck navigation={navigation} />
 );
 
 const tabBarComponent = (props: {}): React$Element<typeof View> => {
@@ -94,7 +102,8 @@ const FooterTabNavigation = createBottomTabNavigator(
   {
     play: { screen: PlayScreen },
     score: { screen: ScoreScreen },
-    profile: { screen: ProfileScreen }
+    profile: { screen: ProfileScreen },
+    deck: { screen: Deck }
   },
   {
     tabBarComponent,

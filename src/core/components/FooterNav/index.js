@@ -156,16 +156,18 @@ export default class FooterNav extends Component<PropsType, StateType> {
     return (
       <View ref={this.setFooterNavRef} style={container}>
         {this.routes.map(
-          (r: string, i: number): React$Element<typeof View> => (
-            <View key={r} style={item}>
-              <TouchableOpacity {...o} onPress={(): void => this.goTo(r)}>
-                <TabBarIcon focused={activeTab === r} name={icons[i]} />
-                <Text capitalize style={this.getTextStyles(r)}>
-                  {r}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )
+          (r: string, i: number): React$Element<typeof View> => {
+            return i === 3 ? null : (
+              <View key={r} style={item}>
+                <TouchableOpacity {...o} onPress={(): void => this.goTo(r)}>
+                  <TabBarIcon focused={activeTab === r} name={icons[i]} />
+                  <Text capitalize style={this.getTextStyles(r)}>
+                    {r}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )
+          }
         )}
       </View>
     );

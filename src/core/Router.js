@@ -11,6 +11,7 @@ import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import { FooterTabNavigation, Router } from "./components";
 import Profile from "../screens/Profile";
 import Score from "../screens/Score";
+import Deck from "../screens/Deck";
 // import About from "../screens/About";
 import Play from "../screens/Play";
 
